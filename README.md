@@ -43,5 +43,11 @@ C'est alors que deux projets vont voir le jour en même temps pour développer u
 Il s'avère que les projets se développent à peu près en même temps mais surtout qu'ils sont complémentaires. D'un côté tandis que Richard Stallman créait les programmes de base (programme de copie de fichier, de suppression de fichier, éditeur de texte), Linus s'était lancé dans la création du « cœur » d'un système d'exploitation : le noyau. Le projet GNU (programmes libres) et Linux (noyau d'OS) ont fusionné pour créer GNU/Linux.
 
 <p align="center">
-  <img src="./img/img3.jpg" alt="drawing" title="OS" width="700"/>
+  <img src="./img/img3.jpg" alt="drawing" title="OS" width="600"/>
 </p>
+
+Vous l'avez peut être déjà compris mais le fait que le projet GNU/LINUX est gratuit et libre constitue un avantage indéniable sur les autres systèmes d'exploitation. De plus, comme on peut le redistribuer, de nombreuses entreprises se sont créées sur la redistribution de ce projet et propose ce qu'on appelle des distributions. En effet, un système d'exploitation est en lui-seul peu utile, il nous faut des logiciels pour le rendre utile et qu'il travaille un peu : un environnement de bureau (Gnome, XFCE, ...), des services de messageries, des gestionnaire de fichiers (Nautilus,...), des terminaux de commandes (Konsole, ..), des gestionnaires de paquets (apt-get, pacman, ...), ...
+
+Il existe donc de multiples distributions et théoriquement une infinité vu que n'importe quelle installation avec un noyau linux et une distribution. On peut citer les plus connues : Ubuntu, Debian, Mint, Arch, Kali, Mandriva, Red Hat, ...
+
+Il serait complétement incensé de lister exhaustivement tous les avantages et défauts, architectures, codes des différentes distributions. Nous allons évidemment nous concentrer sur le noyau linux. Néanmoins le noyau Linux est intrinsèquement un projet qui évolue perpetuellement. Il est donc délicat de parler de son architecture et de son code comme quelque chose de définitif. Pour preuve, il suffit d'aller voir le projet Linux disponible sur GitHub (Linus Torvalds est entre autre le créateur du logiciel de gestions de version : Git)
