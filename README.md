@@ -12,7 +12,7 @@ L'idée générale à retenir d'un OS, c'est qu'aucun logiciel ne doit accéder 
 
 Nous pouvons donc résumer le travail d'un système d'exploitation avec ce schéma ci-dessous :
 
-![OS](./img/img2.png)
+![OS](./img/img2.png =200x300)
 
 ## Commençons 
 
