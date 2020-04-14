@@ -14,7 +14,7 @@ Nous pouvons donc résumer le travail d'un système d'exploitation avec ce sché
 
 <p align="center">
   <img src="./img/img2.png" alt="drawing" title="OS" width="300"/>
-  <p> soure : https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation </p>
+  <p align="center"> Source : https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation </p>
 </p>
 
 
