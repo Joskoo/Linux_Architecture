@@ -16,6 +16,9 @@ Nous pouvons donc résumer le travail d'un système d'exploitation avec ce sché
   <img src="./img/img2.jpg" alt="drawing" title="OS" width="700"/>
 </p>
 
+Nous savons maintenant expliquer à quoi sert, de base, un système d'exploitation. Chaque système d'exploitation est unique et ne propose pas les mêmes services que ces pairs donc il est plutôt hardu de définir exhaustivement tous les services que propose tous les OS, mais dorénavant vous avez l'essentiel.
+
 ## Commençons 
 
-Nous savons maintenant expliquer à quoi sert, de base, un système d'exploitation. 
+
+
