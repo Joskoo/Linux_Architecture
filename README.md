@@ -16,10 +16,6 @@ Nous pouvons donc résumer le travail d'un système d'exploitation avec ce sché
   <img src="./img/img2.jpg" alt="drawing" title="OS" width="700"/>
 </p>
 
-![OS](./img/img2.jpg)
-
-
-
 ## Commençons 
 
 Nous savons maintenant expliquer à quoi sert, de base, un système d'exploitation. 
