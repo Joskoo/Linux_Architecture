@@ -1,4 +1,4 @@
-![cover](./img/img00.jpg)
+![cover](./img/img0.jpg)
 
 # Linux Kernel : Histoire, Architecture & Analyse de code
 
@@ -13,7 +13,7 @@ L'idée générale à retenir d'un OS, c'est qu'aucun logiciel ne doit accéder 
 Nous pouvons donc résumer le travail d'un système d'exploitation avec ce schéma ci-dessous :
 
 <p align="center">
-  <img src="./img/img2.png" alt="drawing" title="OS" width="300"/>
+  <img src="./img/img2.jpg" alt="drawing" title="OS" width="300"/>
   <p align="center"> Source : https://fr.wikipedia.org/wiki/Syst%C3%A8me_d%27exploitation </p>
 </p>
 
