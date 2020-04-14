@@ -13,7 +13,7 @@ L'idée générale à retenir d'un OS, c'est qu'aucun logiciel ne doit accéder 
 Nous pouvons donc résumer le travail d'un système d'exploitation avec ce schéma ci-dessous :
 
 <p align="center">
-  <img src="./img/img2.png" alt="drawing" title="OS" width="500"/>
+  <img src="./img/img2.png" alt="drawing" title="OS" width="300"/>
 </p>
 
 
