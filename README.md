@@ -18,7 +18,7 @@ Nous pouvons donc résumer le travail d'un système d'exploitation avec ce sché
 
 Nous savons maintenant expliquer à quoi sert, de base, un système d'exploitation. Chaque système d'exploitation est unique et ne propose pas les mêmes services que ces pairs donc il est plutôt hardu de définir exhaustivement tous les services que propose tous les OS, mais dorénavant vous avez l'essentiel.
 
-## Commençons 
+## Introduction
 
 Au vu de la complexité que représente un système d'exploitation, il est évidemment impossible de lister exhaustivement toute l'architecture et d'analyser tout le code de Linux dans une présentation concise et si possible intéressante. Dans ce rapport, nous ne ferons donc qu'aller à l'essentiel sur de nombreux points surtout au niveau de l'architecture qui est plutôt assez impressionante et rebutante quand on s'y plonge dedans. En ce qui concerne l'analyse du code, nous n'allons évidemment pas commenter chaque ligne de code du noyau Linux, nous prendrons un module comme exemple de tout le projet Linux avec des défauts et des avantages caractéristiques de tout le kernel.
 
@@ -56,3 +56,11 @@ Il serait complétement incensé de lister exhaustivement tous les avantages et 
   <img src="./img/img4.JPG" alt="drawing" title="GitHub" width="1200"/>
   <p align="center"> Source : https://github.com/torvalds/linux </p>
 </p>
+
+Comme vous pouvez le voir, c'est l'un des projets les plus suivis et mis à jour de la plateforme GitHub (presque 1 million de commits ! Le nombre de contributeurs indiquent le symbole infini ∞ ! Des dizaines de milliers de fork et de stars , ...) c'est un projet absolument colosal. Voilà ce qu'est Linux aujourd'hui !
+
+## Commençons 
+
+Mais par où commencer, sous quel angle attaquer ce projet conséquent qui est mis à jour et améliorer presque tous les jours par des milliers de contributeurs à travers le monde ? Et bien en analysant l'essentiel de ce projet, sa racine, son tronc, son architecture. Nous allons nous attarder sur ce qui fait que Linux est si "facilement" modifiable, améliorable et maintenable et pourquoi il a la popularité qu'il détient aujourd'hui.
+
+Malheureusement (ou heureusement), le noyau Linux n'est pas orienté objet : exit donc le diagramme UML de classe pour nous aider à comprendre comment il est construit. Nous ne pourrons donc pas utiliser le langage UML pour décrire ce projet mais on peut toujours essayer de le schématiser. Cependant schématiser un si gros projet, reviendrait à le comprendre entièrement et effectuer un travail conséquent pour réduire son explication en quelques pages. Or il existe déjà des livres qui tentent dans le faire de manière plus ou moins concise :
