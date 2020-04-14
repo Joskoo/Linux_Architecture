@@ -1,3 +1,3 @@
-![cover](./img/img0.jpg)
+![cover](./img/img00.jpg)
 
 #Linux Architecture
