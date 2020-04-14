@@ -41,3 +41,7 @@ C'est alors que deux projets vont voir le jour en même temps pour développer u
 - De l'autre un étudiant, Linus Torvald, de l'Université de Helsinki (Finlande), entreprend de créer sur son temps libre son propre système d'exploitation : Linux (contraction de Linus et Unix)
 
 Il s'avère que les projets se développent à peu près en même temps mais surtout qu'ils sont complémentaires. D'un côté tandis que Richard Stallman créait les programmes de base (programme de copie de fichier, de suppression de fichier, éditeur de texte), Linus s'était lancé dans la création du « cœur » d'un système d'exploitation : le noyau. Le projet GNU (programmes libres) et Linux (noyau d'OS) ont fusionné pour créer GNU/Linux.
+
+<p align="center">
+  <img src="./img/img3.jpg" alt="drawing" title="OS" width="700"/>
+</p>
