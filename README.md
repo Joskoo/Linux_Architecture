@@ -36,11 +36,22 @@ Avant le système d'exploitation GNU/Linux, il y avait deux principaux système 
 - MS-DOS : système d'exploitation propriétaire et payant de Microsoft 
 - Unix : système d'exploitation propriétaire et payant aussi de AT&T (considéré comme plus performant que son concurrent mais plus dur à prendre en main donc préféré des spécialistes du domaine)
 
+<p align="center">
+  <img src="./img/img7.jpg" alt="drawing" title="MSDOS v UNIX" width="800"/>
+  <p align="center"> MS DOS vs UNIX </p>
+</p>
+
 A cette époque, pas vraiment d'interface graphique (faute de mémoire vive) mais les ordinateurs fonctionnaient de la même façon qu'aujourd'hui. Seul problème, vous l'avez peut être remarqué, les deux principaux systèmes d'exploitation sont propriétaires et payants ce qui est plutôt contraignants quand on est feru d'informatique : payer une licence 200-300€ à chaque fois que l'on souhaite monter un ordinateur c'est plutôt contraignant et coûteux. De surcroît, la license propriétaire empêche l'accès au code source de l'OS par les utilisateurs, freinant ainsi toutes les potentielles idées innovantes que peuvent proposer ces derniers pour améliorer l'OS. Cette mentalité où c'est la communauté des utilisateurs qui propose, améliore et entretient un logiciel se nomme la mentalité open source. En effet, quand vous avez accès au code source d'un logiciel, vous savez potentiellement tout sur ce dernier (encore faut il les compétences et le temps, mais dans tous les cas, factuellement, tout est consultable par n'importe qui). En plus de faire des économies sur le coût de ces logiciels, ces derniers sont souvent très performants car rassemblant une intelligence collective inouïe et se basant sur un principe anarchique où il n'y a aucune hiérarchie (théoriquement) qui contrôle les modifications du code source.
 
 C'est avec cette mentalité open source que deux projets vont voir le jour en même temps pour développer un nouveau système d'exploitation totalement gratuit et surtout libre. Un logiciel libre signifie que le code source est consultable et modifiable par les utilisateurs (open source en anglais) ce qui donne la possibilité de le modifier selon leur bon vouloir et même de le redistribuer pour en faire leur propre version et même de la "commercialiser" (même si cela est généralement considéré comme amorale par la communauté open source) :
 - D'un côté le projet GNU de Richard Stallman, commencé en 1984, qui souhaitait créer un système d'exploitation gratuit et open source, basé sur Unix
 - De l'autre un étudiant, Linus Torvald, de l'Université de Helsinki (Finlande), qui, en 1991, fatigué par les défauts de l'OS Unix qu'il ne peut modifier, entreprend de créer sur son temps libre son propre système d'exploitation basé aussi sur Unix : Linux (contraction de Linus et Unix). Le projet deviendra rapidement collaboratif avec toujours Linus comme chef d'orchestre (encore aujourd'hui).
+
+<p align="center">
+  <img src="./img/img8.JPG" alt="drawing" title="First linux collaborators" width="600"/>
+  <p align="center"> Les premiers collaborateurs du projet Linux </p>
+  <p align="center"> Source : https://docs.huihoo.com/linux/kernel/a1/index.html </p>
+</p>
 
 Il s'avère que ces projets, se développant à peu près à la même époque, sont rapidement devenus complémentaires. D'un côté tandis que Richard Stallman créait les programmes de base d'un OS (programme de copie de fichier, de suppression de fichier, éditeur de texte), Linus s'était lancé dans la création du « cœur » d'un système d'exploitation : le noyau. Le projet GNU (programmes libres) et Linux (noyau d'OS) ont fusionné pour créer GNU/Linux. Une redoutable association qui est souvent résumé par le mot "Linux" mais techniquement le nom de ce système d'exploitation est "GNU/Linux".
 
@@ -52,6 +63,11 @@ Mais qu'est ce qu'un noyau dans un système d'exploitation ? Vu que nous allons 
 
 Vous l'avez peut être déjà compris mais le fait que le projet GNU/LINUX est gratuit et libre constitue un avantage indéniable sur les autres systèmes d'exploitation de l'époque. De plus, comme on peut le redistribuer, de nombreuses entreprises se sont créées sur la redistribution et l'amélioration de ce projet et propose ce qu'on appelle des distributions. En effet, un système d'exploitation est en lui-seul peu utile, il nous faut des logiciels pour le rendre utile et qu'il travaille un peu : un environnement de bureau (Gnome, XFCE, ...), des services de messageries, des gestionnaire de fichiers (Nautilus,...), des terminaux de commandes (Konsole, ..), des gestionnaires de paquets (apt-get, pacman, ...), ... Généralement, le noyau Linux est le même pour toutes les distributions et c'est le reste qui est modulé selon les distributions. Il existe donc de multiples distributions et théoriquement une infinité vu que n'importe quelle installation avec un noyau linux est une distribution. On peut citer les plus connues comme Ubuntu, Debian, Mint, Arch, Kali, Mandriva, Red Hat, ...
 
+<p align="center">
+  <img src="./img/img6.jpg" alt="drawing" title="Distributions" width="600"/>
+  <p align="center"> Source : https://informathieu.fr/linux-fait-tout-fonctionner </p>
+</p>
+
 Il serait complétement incensé de lister exhaustivement tous les avantages et défauts, des architectures, des codes des différentes distributions. Comme nous l'avons dit, nous allons uniquement nous concentrer sur le noyau Linux. Néanmoins le noyau Linux est intrinsèquement un projet qui évolue perpetuellement. Il est donc délicat de parler de son architecture et de son code comme quelque chose de définitif et figé dans le temps. Pour preuve, il suffit d'aller voir le projet Linux disponible sur GitHub (Linus Torvalds est entre autre l'un des créateur du logiciel de gestions de version : Git)
 
 <p align="center">
@@ -61,7 +77,7 @@ Il serait complétement incensé de lister exhaustivement tous les avantages et 
 
 Comme vous pouvez le voir sur l'image ci-dessus, c'est l'un des projets les plus suivis et mis à jour de la plateforme GitHub (presque 1 million de commits ! Le nombre de contributeurs est indiqué par le symbole infini ∞ ! Des dizaines de milliers de fork et de stars , ...) c'est un projet absolument colossal. Voilà ce qu'est le kernel Linux aujourd'hui ! Et c'est ce qui en fait sa force : des milliers de développeurs bénévoles, tous spécialistes d'un ou plusieurs domaines, aident au développement du kernel. Si vous détecter une faille, rien de plus simple : soit cette faille est dans votre domaine d'expertis et vous pouvez la modifier vous-même et soumettre la solution à tous les utilisateurs via une pull request sur GitHub; ou mettre en exergue cette faille au près de la communauté dans l'espoir que quelqu'un la corrige ou vous aide à la corriger (ce qui est très souvent le cas au vu de l'activité du repository de Linus). Un projet communautaire si gigantesque est ce qui explique principalement toute l'engouement autour des distributions GNU/Linux et est sa force principale.
 
-Il suffit de regarder la vidéo ci-dessous, pour saisir toute la puissance d'un projet open-source communautaire comme celui-ci :
+Il suffit de regarder la vidéo ci-dessous, pour saisir toute la puissance d'un projet open-source communautaire comme celui-ci (cliquez sur l'image en appuyant sur Ctrl pour ouvrir la vidéo dans un nouvel onglet) :
 
 [![Linux Kernel Development Visualization](./img/img5.jpg)](https://youtu.be/P_02QGsHzEQ "Linux Kernel Development Visualization (git commit history - past 6 weeks - june 02 2012)")
 
