@@ -63,7 +63,7 @@ Comme vous pouvez le voir sur l'image ci-dessus, c'est l'un des projets les plus
 
 Il suffit de regarder la vidéo ci-dessous, pour saisir toute la puissance d'un projet open-source communautaire comme celui-ci :
 
-[![Everything Is AWESOME](./img/img5)](https://youtu.be/P_02QGsHzEQ "Linux Kernel Development Visualization (git commit history - past 6 weeks - june 02 2012)")
+[![Linux Kernel Development Visualization](./img/img5.jpg)](https://youtu.be/P_02QGsHzEQ "Linux Kernel Development Visualization (git commit history - past 6 weeks - june 02 2012)")
 
 Dernièrement, la mentalité open source, et donc de surcroît GNU/Linux, est devenu très populaire, en réponse entre autre, aux révélations d'Edward Snowden sur la surveillance de masse de l'internet mondial par les Etats-Unis via la N.S.A. La popularité d'internet entrainant inéxorablement des excès, des contrôles et des lois plus strict, des déboires politiques, ... l'open source est alors devenu un moyen de contrer cette paranoïa ambiante quant à la sécurité des données sur internet. Si tout est visible sur un logiciel, un programme, une application, ... alors quelqu'un remarquera forcément si ce dernier utilise nos données de façon malveillante. C'est cette confiance collective, sans autorité hiérarchique, (qui n'est pas sans rappeler les utopies anarchistes de certains philosophes) qui est à la base de la popularité croissante de logiciels/programmes comme GNU/Linux, Firefox, Libre Office, Tor, Gimp, les cryptos monnaies avec la block chain, ... . Il est important de comprendre ce contexte dans lequel nous vivons présentemment, pour saisir toute la puissance de GNU/Linux et plus précisément içi, du noyau Linux.
 
