@@ -113,7 +113,8 @@ Pour contourner ce problème, les modules ont été crées. En effet, les module
 C'est pourquoi il y a tant de distribution différentes de Linux. Outre le fait de changer ce qui entoure le kernel Linux et les logiciels qu'on va préinstallé dans une distribution, ce qui fait leur différence, c'est aussi les différents modules que l'on va charger avec le kernel Linux. Si on regarde plus activement le Makefile (fichier permettant de compiler du code en C) on voit déjà qu'il est extrêment complexe mais que surtout on peut totalement choisir comment compiler le noyau et c'est ce qui fait que de multiples distributions en vue le jour, chacun pour répondre ou correspondre à une philosophie ou une situation spécifique. D'un coeur de système d'exploitation monolithique, Linux a donc su innover en introduisant la notion de module chargeable et versatile pour se rendre extrêment adaptable aux différents référentiels dans laquelle il pouvait intervenir.
 
 <p align="center">
-  <img src="./img/img8.jpg" alt="drawing" title="Makefile" width="400"/>
+  <img src="./img/img9.JPG" alt="drawing" title="Makefile" width="700"/>
+  <p align="center"> Presque 2000 lignes, plus de 270 collaborateurs sur le Makefile du kernel Linux. Tant de façon de compiler le coeur de GNU/Linux est l'une des raisons de sa grande diversité </p>
   <p align="center"> Source : https://github.com/torvalds/linux </p>
 </p>
 
