@@ -100,7 +100,45 @@ Maintenant que le sujet est enfin défini, nous pouvons enfin rentrer dans le vi
 
 ## Architecture du noyau Linux
 
-kk
+Le noyau Linux est un noyau de système d'exploitation assez unique dans sa conception. En effet, il est important de savoir qu'il existe deux types de noyau :
+- les micro kernels : le noyau est composé d'un fichier central très sommaire, toutes les autres fonctionnalités sont implementés dans des modules séparés. La communication entre les différents modules et le fichier central se fait via des fonctions définies. Cela permet notamment une excellente scalabilité, une lecture et un entretien du code simplifié. Cette méthode s'apparente énormement aux micro services dont la popularité augmente dû aux problèmes de Big Data.
+- les kernels monolithiques : c'est la méthode traditionnelle pour créer un kernel. Tout le code dans un gros fichiers avec très peu de dépendance mais une scalabilité complexe et une résistance au panne faible.
+
+Le noyau de Linux, lui est ... monolithique. Ca peut paraître très étrange au vu des louanges sur le côté communautaire de Linux que nous avons décrit précédemment, mais en effet, le noyau de Linux est essentiellement un gros fichier avec plein de code dedans. Mais pourquoi cela ? Il faut savoir que pour des raisons plus ou moins complexes, les micros kernels étaient ( et sont toujours selon certains spécialistes) beaucoup moins performants que les kernels monolithiques. Linus Torvalds, lui, ne croyaient absolument pas à la puissance des micros kernels (ce qui lui valu des discussions houleuses avec certains collaborateurs de son projet) et à tout simplement choisi un noyau de type monolythique.
+
+Mais alors comment expliquer la grande scalabilité et communauté de Linux si ce noyau est un gros fichier monolithique et complexe ? Premièrement, il est important de souligner qu'un kernel monolithique n'a jamais été problématiqe en soit. C'est une manière de coder extrêment classique et maîtriser par le plus grand nombre. Ce qui pose problème ici, c'est d'expliquer sa maintenance et son entretien qui ferait palir les technologies Big Data d'aujourd'hui alors que ce kernel est censé être monolithique.
+
+Pour contourner ce problème, les modules ont été crées. En effet, les modules sont des bouts de codes que l'on peut ajouter ou enlever du kernel avant ou pendant son execution. Cela permet d'ajouter des fonctionnalités qui ne sont pas présente de base sur le kernel Linux et ainsi de contourner le gros désavantage des systèmes monolithiques : la scalabilité et la maintenance. Ce n'est pas exactement un micro kernel puisque le noyau en lui même ne se repose pas sur les modules pour fonctionner. On peut voir les modules du noyau Linux comme des features additionnelles flexibles et performantes. Ainsi, si une nouvelle technologie apparaît (prenons comme exemple USB3) alors il "suffit" de créer un nouveau module et de le charger pour prendre cette nouvelle technologie en compte sur le système d'exploitation. Le kernel reste presque le même mais quand il rencontre un nouvelle hardware, une nouvelle technologie, ... pas besoin de changer tout son code pour la prendre en compte, il suffit théoriquement de charger un nouveau module pour la prendre en compte. C'est en cela que réside la puissance de Linux, une énorme quantité de modules qui répondent à différentes situations spécifiques. 
+
+C'est pourquoi il y a tant de distribution différentes de Linux. Outre le fait de changer ce qui entoure le kernel Linux et les logiciels qu'on va préinstallé dans une distribution, ce qui fait leur différence, c'est aussi les différents modules que l'on va charger avec le kernel Linux. Si on regarde plus activement le Makefile (fichier permettant de compiler du code en C) on voit déjà qu'il est extrêment complexe mais que surtout on peut totalement choisir comment compiler le noyau et c'est ce qui fait que de multiples distributions en vue le jour, chacun pour répondre ou correspondre à une philosophie ou une situation spécifique. D'un coeur de système d'exploitation monolithique, Linux a donc su innover en introduisant la notion de module chargeable et versatile pour se rendre extrêment adaptable aux différents référentiels dans laquelle il pouvait intervenir.
+
+<p align="center">
+  <img src="./img/img8.jpg" alt="drawing" title="Makefile" width="400"/>
+  <p align="center"> Source : https://github.com/torvalds/linux </p>
+</p>
+
+Linux est donc devenu si communautaire et flexible car il fut l'un des premiers kernel open source permettant de se diversifier aussi facilement. C'est pourquoi on retrouve le noyau Linux dans énormément de device de nos jours : dans les smartphones (Androïd), dans les systèmes embarqués, dans de nombreux serveurs à travers le monde, dans nos ordinateurs. La base du kernel est gratuit et libre, il ne tient donc qu'à vous et vos envies de le faire correspondre à vos attentes si jamais quelqu'un ne l'a pas déjà fait.
+
+Le noyau Linux a donc pour but de faire fonctionner l'OS GNU/Linux et rendre l'utilisation des ressources matérielles transparente pour les utilisateurs. L'utilisateur ne doit predque jamais se rendre compte des limitations matérielles comme le processeur par exemple. Chaque processus a toujours l'impression d'être seul et d'avoir accès à toutes les ressources de calcul et de mémoire. C'est sans compter l'exceptionnelle gestion du noyau. En effet, la réalité est extrêment plus complexe. Par exemple, chaque processus a l'impression d'être unique, c'est surtout car le kernel s'assure que les differents processus alternent successivement l'utilisation des ressources matérielles. Voilà, ce qu'est la puissance d'un noyau d'OS.
+
+Le noyau Linux peut être résumé en 5 grandes parties :
+- Le Process scheduler (Le planificateur des processus) : <br>
+is responsible for controlling process access to the CPU. The scheduler enforces a policy that ensures that processes will have fair access to the CPU, while ensuring that necessary hardware actions are performed by the kernel on time
+- Le Memory Manager (Le gestionnaire de mémoire) : <br>
+ permits multiple process to securely share the machine's main memory system. In addition, the memory manager supports virtual memory that allows Linux to support processes that use more memory than is available in the system. Unused memory is swapped out to persistent storage using the file system then swapped back in when it is needed.
+- Le Virtual File System (Le système de fichier virtuel) : <br>
+abstracts the details of the variety of hardware devices by presenting a common file interface to all devices. In addition, the VFS supports several file system formats that are compatible with other operating systems
+- Le netword interface (L'interface réseau) : <br>
+provides access to several networking standards and a variety of network hardware.
+- L'inter process communication (La communication inter processus) : <br>
+subsystem supports several mechanisms for process-to-process communication on a single Linux system. 
+
+(Le noyau étant codé en anglais il n'existe pas de nom officiel français pour ces parties, juste des traductions littérales. Il convient aussi de rappeler encore une fois que c'est un résumé très grossier de la compléxité du code du noyau Linux, si vous souhaitez comprendre plus profondément le fonctionnement du noyau, nous vous invitons à lire des articles ou des livres de professionnels beaucoup plus complet)
+
+Vous reconnaissez certainement beaucoup de points commun avec les fonctionnalités du kernel décrites dans les parties précédentes comme la gestion de mémoire, la communication entre différents processus, gestion de l'éxecution des processus, ...
+Ces 5 grandes parties du noyau Linux sont dépendantes les unes des autres et cette interdépendance peut être résumée avec le schéma ci-dessous :
+
+
 
 ## Sources 
 - Professional Linux Kernel Architecture | Wolfgang Mauerer | 2008 : <br>
