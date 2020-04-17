@@ -124,15 +124,15 @@ Le noyau Linux a donc pour but de faire fonctionner l'OS GNU/Linux et rendre l'u
 
 Le noyau Linux peut être résumé en 5 grandes parties :
 - Le Process scheduler (Le planificateur des processus) : <br>
-is responsible for controlling process access to the CPU. The scheduler enforces a policy that ensures that processes will have fair access to the CPU, while ensuring that necessary hardware actions are performed by the kernel on time
+Comme son nom l'indique, cette partie du noyau gère et contrôle les processus ayant accès au CPU. Il s'assure que l'accès au proccesseur soit répartie entre les différents processus et équitable, et que les demandes des ressources matérielles soient effectuées dans les temps.
 - Le Memory Manager (Le gestionnaire de mémoire) : <br>
- permits multiple process to securely share the machine's main memory system. In addition, the memory manager supports virtual memory that allows Linux to support processes that use more memory than is available in the system. Unused memory is swapped out to persistent storage using the file system then swapped back in when it is needed.
+Cette partie se charge de la répartition de la mémoire principale du système. Elle se charge de ce que l'on nomme la mémoire virtuelle, une mémoire qui perment au noyau Linux de supporter plus de processus que disponible physiquement (la fameuse différence entre les ordinateurs 32bits et 64bits correspondent à la taille de la mémoire virtuelle de votre ordinateur). 
 - Le Virtual File System (Le système de fichier virtuel) : <br>
-abstracts the details of the variety of hardware devices by presenting a common file interface to all devices. In addition, the VFS supports several file system formats that are compatible with other operating systems
-- Le netword interface (L'interface réseau) : <br>
-provides access to several networking standards and a variety of network hardware.
+Cette partie se charge de présenter un système de fichier fonctionnel pour tous les types de fichiers. Cela permet de supporter un grand nombre de format de fichiers compatible avec différents OS.
+- Le network interface (L'interface réseau) : <br>
+C'est la partie qui se charge de tous les protocoles et requêtes réseau (TCP/IP, ARP, Ethernet, ...), très importants si l'on souhaite pouvoir communiquer avec d'autres ordinateurs.
 - L'inter process communication (La communication inter processus) : <br>
-subsystem supports several mechanisms for process-to-process communication on a single Linux system. 
+Comme son nom l'indique, cette partie est dédié à la communication entre les différents processus. C'est une partie importante car elle permet à des processus qui, théoriquement, ne sont pas spécialement conçus pour communiquer ensemble, de partager des informations et de travailler ensemble.
 
 (Le noyau étant codé en anglais il n'existe pas de nom officiel français pour ces parties, juste des traductions littérales. Il convient aussi de rappeler encore une fois que c'est un résumé très grossier de la compléxité du code du noyau Linux, si vous souhaitez comprendre plus profondément le fonctionnement du noyau, nous vous invitons à lire des articles ou des livres de professionnels beaucoup plus complet)
 
