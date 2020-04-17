@@ -139,7 +139,13 @@ Comme son nom l'indique, cette partie est dédié à la communication entre les 
 Vous reconnaissez certainement beaucoup de points commun avec les fonctionnalités du kernel décrites dans les parties précédentes comme la gestion de mémoire, la communication entre différents processus, gestion de l'éxecution des processus, ...
 Ces 5 grandes parties du noyau Linux sont dépendantes les unes des autres et cette interdépendance peut être résumée avec le schéma ci-dessous :
 
+<p align="center">
+  <img src="./img/img10.JPG" alt="drawing" title="Makefile" width="500"/>
+  <p align="center"> Architecture des sous sytèmes du noyau Linux </p>
+  <p align="center"> Source : https://docs.huihoo.com/linux/kernel/a1/index.html </p>
+</p>
 
+Vous rem
 
 ## Sources 
 - Professional Linux Kernel Architecture | Wolfgang Mauerer | 2008 : <br>
