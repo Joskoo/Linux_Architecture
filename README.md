@@ -126,7 +126,7 @@ Le noyau Linux peut être résumé en 5 grandes parties :
 - Le Process scheduler (Le planificateur des processus) : <br>
 Comme son nom l'indique, cette partie du noyau gère et contrôle les processus ayant accès au CPU. Il s'assure que l'accès au proccesseur soit répartie entre les différents processus et équitable, et que les demandes des ressources matérielles soient effectuées dans les temps.
 - Le Memory Manager (Le gestionnaire de mémoire) : <br>
-Cette partie se charge de la répartition de la mémoire principale du système. Elle se charge de ce que l'on nomme la mémoire virtuelle, une mémoire qui perment au noyau Linux de supporter plus de processus que disponible physiquement (la fameuse différence entre les ordinateurs 32bits et 64bits correspondent à la taille de la mémoire virtuelle de votre ordinateur). 
+Cette partie se charge de la répartition de la mémoire principale du système. Elle se charge de ce que l'on nomme la mémoire virtuelle, une mémoire qui perment au noyau Linux de supporter plus de processus que disponible physiquement (la fameuse différence entre les ordinateurs 32bits et 64bits correspondent à la taille de la mémoire virtuelle de votre ordinateur). Le memory manager permet aussi entre autre de faire des swaps de mémoire entre la RAM et les périphériques de stockage. 
 - Le Virtual File System (Le système de fichier virtuel) : <br>
 Cette partie se charge de présenter un système de fichier fonctionnel pour tous les types de fichiers. Cela permet de supporter un grand nombre de format de fichiers compatible avec différents OS.
 - Le network interface (L'interface réseau) : <br>
@@ -148,5 +148,8 @@ https://cse.yeditepe.edu.tr/~kserdaroglu/spring2014/cse331/termproject/BOOKS/Pro
 https://developer.ibm.com/technologies/linux/articles/l-linux-kernel/
 - Conceptual Architecture of the Linux Kernel | Ivan Bowman | January 1998 : <br>
 https://docs.huihoo.com/linux/kernel/a1/index.html
+- La mémoire virtuelle : <br>
+https://sites.uclouvain.be/SystInfo/notes/Theorie/html/MemoireVirtuelle/vmem.html
 - GNU : https://www.gnu.org/home.fr.html
 - Wikipedia : https://en.wikipedia.org/wiki/Linux_kernel
+- Linus Torvalds' GitHub profile : https://github.com/torvalds
