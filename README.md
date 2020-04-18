@@ -104,11 +104,33 @@ Le noyau Linux est un noyau de système d'exploitation assez unique dans sa conc
 - les micro kernels : le noyau est composé d'un fichier central très sommaire, toutes les autres fonctionnalités sont implementés dans des modules séparés. La communication entre les différents modules et le fichier central se fait via des fonctions définies. Cela permet notamment une excellente scalabilité, une lecture et un entretien du code simplifié. Cette méthode s'apparente énormement aux micro services dont la popularité augmente dû aux problèmes de Big Data.
 - les kernels monolithiques : c'est la méthode traditionnelle pour créer un kernel. Tout le code dans un gros fichiers avec très peu de dépendance mais une scalabilité complexe et une résistance au panne faible.
 
-Le noyau de Linux, lui est ... monolithique. Ca peut paraître très étrange au vu des louanges sur le côté communautaire de Linux que nous avons décrit précédemment, mais en effet, le noyau de Linux est essentiellement un gros fichier avec plein de code dedans. Mais pourquoi cela ? Il faut savoir que pour des raisons plus ou moins complexes, les micros kernels étaient ( et sont toujours selon certains spécialistes) beaucoup moins performants que les kernels monolithiques. Linus Torvalds, lui, ne croyaient absolument pas à la puissance des micros kernels (ce qui lui valu des discussions houleuses avec certains collaborateurs de son projet) et à tout simplement choisi un noyau de type monolythique.
+Le noyau de Linux, lui est ... monolithique. Ca peut paraître très étrange au vu des louanges sur le côté communautaire de Linux que nous avons décrit précédemment, mais en effet, le noyau de Linux est essentiellement un gros fichier avec plein de code dedans. Mais pourquoi cela ? Il faut savoir que pour des raisons plus ou moins complexes, les micros kernels étaient ( et sont toujours selon certains spécialistes) beaucoup moins performants que les kernels monolithiques. Linus Torvalds, lui, ne croyaient absolument pas à la puissance des micros kernels (ce qui lui valu des discussions houleuses avec certains collaborateurs de son projet) et à tout simplement choisi un noyau de type monolythique. Ce choix technique fut l'objet d'un débat houleux entre Linus Torvalds et Andrew S. Tanenbaum, professeur à l’université libre d’Amsterdam.
 
 Mais alors comment expliquer la grande scalabilité et communauté de Linux si ce noyau est un gros fichier monolithique et complexe ? Premièrement, il est important de souligner qu'un kernel monolithique n'a jamais été problématiqe en soit. C'est une manière de coder extrêment classique et maîtriser par le plus grand nombre. Ce qui pose problème ici, c'est d'expliquer sa maintenance et son entretien qui ferait palir les technologies Big Data d'aujourd'hui alors que ce kernel est censé être monolithique.
 
-Pour contourner ce problème, les modules ont été crées. En effet, les modules sont des bouts de codes que l'on peut ajouter ou enlever du kernel avant ou pendant son execution. Cela permet d'ajouter des fonctionnalités qui ne sont pas présente de base sur le kernel Linux et ainsi de contourner le gros désavantage des systèmes monolithiques : la scalabilité et la maintenance. Ce n'est pas exactement un micro kernel puisque le noyau en lui même ne se repose pas sur les modules pour fonctionner. On peut voir les modules du noyau Linux comme des features additionnelles flexibles et performantes. Ainsi, si une nouvelle technologie apparaît (prenons comme exemple USB3) alors il "suffit" de créer un nouveau module et de le charger pour prendre cette nouvelle technologie en compte sur le système d'exploitation. Le kernel reste presque le même mais quand il rencontre un nouvelle hardware, une nouvelle technologie, ... pas besoin de changer tout son code pour la prendre en compte, il suffit théoriquement de charger un nouveau module pour la prendre en compte. C'est en cela que réside la puissance de Linux, une énorme quantité de modules qui répondent à différentes situations spécifiques. 
+Pour contourner ce problème, les modules ont été crées. En effet, les modules sont des bouts de codes que l'on peut ajouter ou enlever du kernel avant ou pendant son execution. Cela permet d'ajouter des fonctionnalités qui ne sont pas présente de base sur le kernel Linux et ainsi de contourner le gros désavantage des systèmes monolithiques : la scalabilité et la maintenance. Ce n'est pas exactement un micro kernel puisque le noyau en lui même ne se repose pas sur les modules pour fonctionner. On peut voir les modules du noyau Linux comme des features additionnelles flexibles et performantes. Ainsi, si une nouvelle technologie apparaît (prenons comme exemple USB3) alors il "suffit" de créer un nouveau module et de le charger pour prendre cette nouvelle technologie en compte sur le système d'exploitation. Le kernel reste presque le même mais quand il rencontre un nouvelle hardware, une nouvelle technologie, ... pas besoin de changer tout son code pour la prendre en compte, il suffit théoriquement de charger un nouveau module pour la prendre en compte. C'est en cela que réside la puissance de Linux, une énorme quantité de modules qui répondent à différentes situations spécifiques.
+
+On peut facilement se rendre compte du nombre de modules dans le kernel Linux. Il suffit de lancer un ordinateur sous Linux et se rendre dans le fichier "/lib/modules". On peut voir le nombre de modules différents qui existent. Ce sont essentiellement des drivers pour différentes technologies et matérielles informatiques. Avec autant de modules permettant l'intégration de différentes technologies, on comprend mieux pourquoi Linux est si flexible et si développé à travers le monde. Si on regarde on obtient les résultats suivants :
+
+<p align="center">
+  <img src="./img/term1.JPG" alt="drawing" title="term1" width="500"/>
+  <p align="center"> </p>
+</p>
+
+<p align="center">
+  <img src="./img/term2.JPG" alt="drawing" title="term2" width="500"/>
+  <p align="center"> </p>
+</p>
+
+<p align="center">
+  <img src="./img/term3.JPG" alt="drawing" title="term3" width="500"/>
+  <p align="center"> </p>
+</p>
+
+<p align="center">
+  <img src="./img/term4.JPG" alt="drawing" title="term4" width="500"/>
+  <p align="center"> </p>
+</p>
 
 C'est pourquoi il y a tant de distribution différentes de Linux. Outre le fait de changer ce qui entoure le kernel Linux et les logiciels qu'on va préinstallé dans une distribution, ce qui fait leur différence, c'est aussi les différents modules que l'on va charger avec le kernel Linux. Si on regarde plus activement le Makefile (fichier permettant de compiler du code en C) on voit déjà qu'il est extrêment complexe mais que surtout on peut totalement choisir comment compiler le noyau et c'est ce qui fait que de multiples distributions en vue le jour, chacun pour répondre ou correspondre à une philosophie ou une situation spécifique. D'un coeur de système d'exploitation monolithique, Linux a donc su innover en introduisant la notion de module chargeable et versatile pour se rendre extrêment adaptable aux différents référentiels dans laquelle il pouvait intervenir.
 
