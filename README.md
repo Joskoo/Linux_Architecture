@@ -144,11 +144,11 @@ Linux est donc devenu si communautaire et flexible car il fut l'un des premiers 
 
 Le noyau Linux a donc pour but de faire fonctionner l'OS GNU/Linux et rendre l'utilisation des ressources matérielles transparente pour les utilisateurs. L'utilisateur ne doit presque jamais se rendre compte des limitations matérielles comme le processeur par exemple. Chaque processus a toujours l'impression d'être seul et d'avoir accès à toutes les ressources de calcul et de mémoire. C'est sans compter l'exceptionnelle gestion du noyau. En effet, la réalité est extrêment plus complexe. Par exemple, chaque processus a l'impression d'être unique, c'est surtout car le kernel s'assure que les differents processus alternent successivement l'utilisation des ressources matérielles. Voilà, ce qu'est la puissance d'un noyau d'OS.
 
-Le noyau Linux peut être résumé en 5 grandes parties :
+Le noyau Linux peut être résumé en 5 sous sytèmes :
 - Le Process scheduler (Le planificateur des processus) : <br>
 Comme son nom l'indique, cette partie du noyau gère et contrôle les processus ayant accès au CPU. Il s'assure que l'accès au proccesseur soit répartie entre les différents processus et équitable, et que les demandes des ressources matérielles soient effectuées dans les temps.
 - Le Memory Manager (Le gestionnaire de mémoire) : <br>
-Cette partie se charge de la répartition de la mémoire principale du système. Elle se charge de ce que l'on nomme la mémoire virtuelle, une mémoire qui perment au noyau Linux de supporter plus de processus que disponible physiquement (la fameuse différence entre les ordinateurs 32bits et 64bits correspondent à la taille de la mémoire virtuelle de votre ordinateur). Le memory manager permet aussi entre autre de faire des swaps de mémoire entre la RAM et les périphériques de stockage. 
+Cette partie se charge de la répartition de la mémoire principale du système. Elle se charge de ce que l'on nomme la mémoire virtuelle, une mémoire qui permet au noyau Linux de supporter plus de processus que disponible physiquement (la fameuse différence entre les ordinateurs 32bits et 64bits correspondent à la taille de la mémoire virtuelle de votre ordinateur). Le memory manager permet aussi entre autre de faire des swaps de mémoire entre la RAM et les périphériques de stockage. 
 - Le Virtual File System (Le système de fichier virtuel) : <br>
 Cette partie se charge de présenter un système de fichier fonctionnel pour tous les types de fichiers. Cela permet de supporter un grand nombre de format de fichiers compatible avec différents OS.
 - Le network interface (L'interface réseau) : <br>
@@ -159,7 +159,7 @@ Comme son nom l'indique, cette partie est dédié à la communication entre les 
 (Le noyau étant codé en anglais il n'existe pas de nom officiel français pour ces parties, juste des traductions littérales. Il convient aussi de rappeler encore une fois que c'est un résumé très grossier de la compléxité du code du noyau Linux, si vous souhaitez comprendre plus profondément le fonctionnement du noyau, nous vous invitons à lire des articles ou des livres de professionnels beaucoup plus complet)
 
 Vous reconnaissez certainement beaucoup de points commun avec les fonctionnalités du kernel décrites dans les parties précédentes comme la gestion de mémoire, la communication entre différents processus, gestion de l'éxecution des processus, ...
-Ces 5 grandes parties du noyau Linux sont dépendantes les unes des autres et cette interdépendance peut être résumée avec le schéma ci-dessous :
+Ces 5 sous systèmes du noyau Linux sont dépendantes les unes des autres et cette interdépendance peut être résumée avec le schéma ci-dessous :
 
 <p align="center">
   <img src="./img/img10.JPG" alt="drawing" title="Makefile" width="500"/>
@@ -167,7 +167,13 @@ Ces 5 grandes parties du noyau Linux sont dépendantes les unes des autres et ce
   <p align="center"> Source : https://docs.huihoo.com/linux/kernel/a1/index.html </p>
 </p>
 
-Vous rem
+On remarque le process scheduler est au coeur de l'architecture du noyau, logique car c'est lui qui gère l'accès au CPU. N'oubliez pas qu'un ordinateur est plutôt bête, il effectue de simples calculs à une vitese éffarante. Donc pour n'importe quel tâche que votre ordinateur réalise, il doit passer par un composant de calcul via le process scheduler et doit pouvoir être interrompu et repris pour une répartition équitable des ressources.
+En revanche, le process scheduler utilise le memory manager pour accèder à un processus en pause lorsqu'on veut le relancer.
+L'inter-process communication dépend du memory manager pour supporter des méchanismes de mémoire partagés ce qui permet à plusieurs processus d'accéder à une mémoire commune et donc de communiquer entre eux plus facilement.
+Le Virtual File System utilise le Network Interface pour supporter ce qu'on nomme le Network File System (NFS)
+Le Memory Manager utilise le virtual file system afin de supporter le swapping (c'est aussi la seule raison pour laquelle le memory manager dépend du process scheduler).
+
+Ensuite, on remarque 
 
 ## Sources 
 - Professional Linux Kernel Architecture | Wolfgang Mauerer | 2008 : <br>
