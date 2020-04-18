@@ -113,22 +113,22 @@ Pour contourner ce problème, les modules ont été crées. En effet, les module
 On peut facilement se rendre compte du nombre de modules dans le kernel Linux. Il suffit de lancer un ordinateur sous Linux et se rendre dans le fichier "/lib/modules". On peut voir le nombre de modules différents qui existent. Ce sont essentiellement des drivers pour différentes technologies et matérielles informatiques. Avec autant de modules permettant l'intégration de différentes technologies, on comprend mieux pourquoi Linux est si flexible et si développé à travers le monde. Si on regarde on obtient les résultats suivants :
 
 <p align="center">
-  <img src="./img/term1.JPG" alt="drawing" title="term1" width="500"/>
+  <img src="./img/term1.JPG" alt="drawing" title="term1" width="700"/>
   <p align="center"> </p>
 </p>
 
 <p align="center">
-  <img src="./img/term2.JPG" alt="drawing" title="term2" width="500"/>
+  <img src="./img/term2.JPG" alt="drawing" title="term2" width="700"/>
   <p align="center"> </p>
 </p>
 
 <p align="center">
-  <img src="./img/term3.JPG" alt="drawing" title="term3" width="500"/>
+  <img src="./img/term3.JPG" alt="drawing" title="term3" width="700"/>
   <p align="center"> </p>
 </p>
 
 <p align="center">
-  <img src="./img/term4.JPG" alt="drawing" title="term4" width="500"/>
+  <img src="./img/term4.JPG" alt="drawing" title="term4" width="700"/>
   <p align="center"> </p>
 </p>
 
