@@ -173,7 +173,96 @@ L'inter-process communication dépend du memory manager pour supporter des méca
 Le Virtual File System utilise le Network Interface pour supporter ce qu'on nomme le Network File System (NFS)
 Le Memory Manager utilise le virtual file system afin de supporter le swapping (c'est aussi la seule raison pour laquelle le memory manager dépend du process scheduler).
 
-Ensuite, on remarque 
+## Commandes relatives aux modules
+
+La commande linux qui permet d’obtenir la liste des modules chargés est “lsmod”. Cette commande liste aussi la mémoire utilisé par le module résident en bytes “Size” et le nombre d’instance utilisés “Used by” , si le nombre est 0 le module n’est pas utilisé actuellement.
+Le nom après le nombre représente les informations de ce qu’utilise le module. 
+
+```bash
+lsmod
+```
+
+<p align="center">
+  <img src="./img/lsmod.JPG" alt="drawing" title="term1" width="500"/>
+  <p align="center"> </p>
+</p>
+
+La commande modinfo permet de montrer des informations sur le module 
+
+```bash
+modinfo vsock
+```
+<p align="center">
+  <img src="./img/modinfo.JPG" alt="drawing" title="term1" width="500"/>
+  <p align="center"> </p>
+</p>
+
+## Analyse du code
+
+Nous avons réalisé l’analyse du code de Linux avec trois différents outils, CodeScene, cppcheck et CPD.   
+
+### CodeScene 
+
+Le premier outil d’analyse de code est CodeScene, il fournit une visualisation du code basé sur les données de contrôle de version et des algorithmes d’apprentissage automatique qui identifient les risques cachés dans le code.
+
+CodeScene détecte les “hotspots” qui sont les zones sensibles, codes utilisés fréquemment, là où l’optimisation est plus susceptible d’obtenir un retour sur investissement.
+
+On apprend également avec cet outil que le code de Linux est composé à 96% de C, que le projet fait environ 20 millions de ligne de code et est soutenu par environ 1300 contributeurs actifs.
+
+Voici les résultats de l'analyse de code :
+
+- 3 fichiers avec une qualité du code en déclin 
+<p align="center">
+  <img src="./img/codescene1.JPG" alt="drawing" title="term1" width="700"/>
+  <p align="center"> </p>
+</p>
+
+- 15 Avertissement sur la complexité du code dans ces fichiers
+<p align="center">
+  <img src="./img/codescene2.JPG" alt="drawing" title="term1" width="700"/>
+  <p align="center"> </p>
+</p>
+
+- Une prédiction de CodeScene sur 3 fichiers qui risque une baisse de qualité du code et donc 
+<p align="center">
+  <img src="./img/codescene3.JPG" alt="drawing" title="term1" width="700"/>
+  <p align="center"> </p>
+</p>
+
+Le nombre de fichiers considérés comme des “hotspots” est assez faible par rapport au nombre total de fichiers qui composent Linux. On peut imaginer que l’optimisation sera réalisée au vu de la communauté active dont bénéficie Linux.
+
+### Cppcheck
+
+Ensuite nous avons utilisés cppcheck, outil en ligne de commande qui va permettre de détecter une multitudes de différents types de bugs dans le code comme :
+
+- Undefined behaviour
+- Dead pointers
+- Division by zero
+- Integer overflows
+- Invalid bit shift operands
+- Invalid conversions
+- Invalid usage of STL
+- Memory management
+- Null pointer dereferences
+- Out of bounds checking
+- Uninitialized variables
+- Writing const data
+
+Vous trouverez le fichier de résultat de l'analyse [ici](./cppcheck.txt).
+
+### CPD
+
+Le dernier outil d'analyse utilisée est CPD, il permet de trouver les duplications de codes. En effet cette analyse est importante car la duplication de code peut être potentiellement grave et affecter la maintenabilité du système.
+
+Avec cet outil impossible d'analyser tout le projet, cela requiert beaucoup trop de ressources et/ou de temps. L'analyse est donc effectuée pour les fichiers présent dans kernel (463 fichiers).
+
+Vous trouverez le fichier de résultat de l'analyse [ici](./cpd_report_kernel.txt).
+
+On trouve quelques duplications de code mais il s'agit principalement de boucles.
+
+### Conclusion de l'analyse
+
+Linux est un OS avec une bonne qualité de code grâce à sa communauté active...
 
 ## Sources 
 - Professional Linux Kernel Architecture | Wolfgang Mauerer | 2008 : <br>
@@ -187,3 +276,6 @@ https://sites.uclouvain.be/SystInfo/notes/Theorie/html/MemoireVirtuelle/vmem.htm
 - GNU : https://www.gnu.org/home.fr.html
 - Wikipedia : https://en.wikipedia.org/wiki/Linux_kernel
 - Linus Torvalds' GitHub profile : https://github.com/torvalds
+- CodeScene https://codescene.io
+- CppCheck http://cppcheck.sourceforge.net
+- CPD https://pmd.github.io/latest/index.html
