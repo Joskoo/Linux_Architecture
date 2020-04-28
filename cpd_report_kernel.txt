@@ -1,0 +1,813 @@
+Found a 103 line (277 tokens) duplication in the following files: 
+Starting at line 479 of /Users/macbook/Downloads/linux-master/kernel/gcov/clang.c
+Starting at line 480 of /Users/macbook/Downloads/linux-master/kernel/gcov/gcc_4_7.c
+
+	}
+
+	return pos;
+}
+
+/**
+ * gcov_iter_new - allocate and initialize profiling data iterator
+ * @info: profiling data set to be iterated
+ *
+ * Return file iterator on success, %NULL otherwise.
+ */
+struct gcov_iterator *gcov_iter_new(struct gcov_info *info)
+{
+	struct gcov_iterator *iter;
+
+	iter = kzalloc(sizeof(struct gcov_iterator), GFP_KERNEL);
+	if (!iter)
+		goto err_free;
+
+	iter->info = info;
+	/* Dry-run to get the actual buffer size. */
+	iter->size = convert_to_gcda(NULL, info);
+	iter->buffer = vmalloc(iter->size);
+	if (!iter->buffer)
+		goto err_free;
+
+	convert_to_gcda(iter->buffer, info);
+
+	return iter;
+
+err_free:
+	kfree(iter);
+	return NULL;
+}
+
+
+/**
+ * gcov_iter_get_info - return profiling data set for given file iterator
+ * @iter: file iterator
+ */
+void gcov_iter_free(struct gcov_iterator *iter)
+{
+	vfree(iter->buffer);
+	kfree(iter);
+}
+
+/**
+ * gcov_iter_get_info - return profiling data set for given file iterator
+ * @iter: file iterator
+ */
+struct gcov_info *gcov_iter_get_info(struct gcov_iterator *iter)
+{
+	return iter->info;
+}
+
+/**
+ * gcov_iter_start - reset file iterator to starting position
+ * @iter: file iterator
+ */
+void gcov_iter_start(struct gcov_iterator *iter)
+{
+	iter->pos = 0;
+}
+
+/**
+ * gcov_iter_next - advance file iterator to next logical record
+ * @iter: file iterator
+ *
+ * Return zero if new position is valid, non-zero if iterator has reached end.
+ */
+int gcov_iter_next(struct gcov_iterator *iter)
+{
+	if (iter->pos < iter->size)
+		iter->pos += ITER_STRIDE;
+
+	if (iter->pos >= iter->size)
+		return -EINVAL;
+
+	return 0;
+}
+
+/**
+ * gcov_iter_write - write data for current pos to seq_file
+ * @iter: file iterator
+ * @seq: seq_file handle
+ *
+ * Return zero on success, non-zero otherwise.
+ */
+int gcov_iter_write(struct gcov_iterator *iter, struct seq_file *seq)
+{
+	size_t len;
+
+	if (iter->pos >= iter->size)
+		return -EINVAL;
+
+	len = ITER_STRIDE;
+	if (iter->pos + len > iter->size)
+		len = iter->size - iter->pos;
+
+	seq_write(seq, iter->buffer + iter->pos, len);
+
+	return 0;
+}
+=====================================================================
+Found a 37 line (188 tokens) duplication in the following files: 
+Starting at line 1753 of /Users/macbook/Downloads/linux-master/kernel/bpf/btf.c
+Starting at line 1799 of /Users/macbook/Downloads/linux-master/kernel/bpf/btf.c
+
+static int btf_var_resolve(struct btf_verifier_env *env,
+			   const struct resolve_vertex *v)
+{
+	const struct btf_type *next_type;
+	const struct btf_type *t = v->t;
+	u32 next_type_id = t->type;
+	struct btf *btf = env->btf;
+
+	next_type = btf_type_by_id(btf, next_type_id);
+	if (!next_type || btf_type_is_resolve_source_only(next_type)) {
+		btf_verifier_log_type(env, v->t, "Invalid type_id");
+		return -EINVAL;
+	}
+
+	if (!env_type_is_resolve_sink(env, next_type) &&
+	    !env_type_is_resolved(env, next_type_id))
+		return env_stack_push(env, next_type, next_type_id);
+
+	if (btf_type_is_modifier(next_type)) {
+		const struct btf_type *resolved_type;
+		u32 resolved_type_id;
+
+		resolved_type_id = next_type_id;
+		resolved_type = btf_type_id_resolve(btf, &resolved_type_id);
+
+		if (btf_type_is_ptr(resolved_type) &&
+		    !env_type_is_resolve_sink(env, resolved_type) &&
+		    !env_type_is_resolved(env, resolved_type_id))
+			return env_stack_push(env, resolved_type,
+					      resolved_type_id);
+	}
+
+	/* We must resolve to something concrete at this point, no
+	 * forward types or similar that would resolve to size of
+	 * zero is allowed.
+	 */
+	if (!btf_type_id_size(btf, &next_type_id, NULL)) {
+=====================================================================
+Found a 84 line (179 tokens) duplication in the following files: 
+Starting at line 81 of /Users/macbook/Downloads/linux-master/kernel/gcov/gcc_3_4.c
+Starting at line 94 of /Users/macbook/Downloads/linux-master/kernel/gcov/gcc_4_7.c
+
+	struct gcov_ctr_info		counts[];
+};
+
+/**
+ * gcov_info_filename - return info filename
+ * @info: profiling data set
+ */
+const char *gcov_info_filename(struct gcov_info *info)
+{
+	return info->filename;
+}
+
+/**
+ * gcov_info_version - return info version
+ * @info: profiling data set
+ */
+unsigned int gcov_info_version(struct gcov_info *info)
+{
+	return info->version;
+}
+
+/**
+ * gcov_info_next - return next profiling data set
+ * @info: profiling data set
+ *
+ * Returns next gcov_info following @info or first gcov_info in the chain if
+ * @info is %NULL.
+ */
+struct gcov_info *gcov_info_next(struct gcov_info *info)
+{
+	if (!info)
+		return gcov_info_head;
+
+	return info->next;
+}
+
+/**
+ * gcov_info_link - link/add profiling data set to the list
+ * @info: profiling data set
+ */
+void gcov_info_link(struct gcov_info *info)
+{
+	info->next = gcov_info_head;
+	gcov_info_head = info;
+}
+
+/**
+ * gcov_info_unlink - unlink/remove profiling data set from the list
+ * @prev: previous profiling data set
+ * @info: profiling data set
+ */
+void gcov_info_unlink(struct gcov_info *prev, struct gcov_info *info)
+{
+	if (prev)
+		prev->next = info->next;
+	else
+		gcov_info_head = info->next;
+}
+
+/**
+ * gcov_info_within_module - check if a profiling data set belongs to a module
+ * @info: profiling data set
+ * @mod: module
+ *
+ * Returns true if profiling data belongs module, false otherwise.
+ */
+bool gcov_info_within_module(struct gcov_info *info, struct module *mod)
+{
+	return within_module((unsigned long)info, mod);
+}
+
+/* Symbolic links to be created for each profiling data file. */
+const struct gcov_link gcov_link[] = {
+	{ OBJ_TREE, "gcno" },	/* Link to .gcno file in $(objtree). */
+	{ 0, NULL},
+};
+
+/*
+ * Determine whether a counter is active. Based on gcc magic. Doesn't change
+ * at run-time.
+ */
+static int counter_active(struct gcov_info *info, unsigned int type)
+{
+	return (1 << type) & info->ctr_mask;
+=====================================================================
+Found a 79 line (159 tokens) duplication in the following files: 
+Starting at line 375 of /Users/macbook/Downloads/linux-master/kernel/gcov/clang.c
+Starting at line 362 of /Users/macbook/Downloads/linux-master/kernel/gcov/gcc_4_7.c
+
+	kfree(info->filename);
+	kfree(info);
+}
+
+#define ITER_STRIDE	PAGE_SIZE
+
+/**
+ * struct gcov_iterator - specifies current file position in logical records
+ * @info: associated profiling data
+ * @buffer: buffer containing file data
+ * @size: size of buffer
+ * @pos: current position in file
+ */
+struct gcov_iterator {
+	struct gcov_info *info;
+	void *buffer;
+	size_t size;
+	loff_t pos;
+};
+
+/**
+ * store_gcov_u32 - store 32 bit number in gcov format to buffer
+ * @buffer: target buffer or NULL
+ * @off: offset into the buffer
+ * @v: value to be stored
+ *
+ * Number format defined by gcc: numbers are recorded in the 32 bit
+ * unsigned binary form of the endianness of the machine generating the
+ * file. Returns the number of bytes stored. If @buffer is %NULL, doesn't
+ * store anything.
+ */
+static size_t store_gcov_u32(void *buffer, size_t off, u32 v)
+{
+	u32 *data;
+
+	if (buffer) {
+		data = buffer + off;
+		*data = v;
+	}
+
+	return sizeof(*data);
+}
+
+/**
+ * store_gcov_u64 - store 64 bit number in gcov format to buffer
+ * @buffer: target buffer or NULL
+ * @off: offset into the buffer
+ * @v: value to be stored
+ *
+ * Number format defined by gcc: numbers are recorded in the 32 bit
+ * unsigned binary form of the endianness of the machine generating the
+ * file. 64 bit numbers are stored as two 32 bit numbers, the low part
+ * first. Returns the number of bytes stored. If @buffer is %NULL, doesn't store
+ * anything.
+ */
+static size_t store_gcov_u64(void *buffer, size_t off, u64 v)
+{
+	u32 *data;
+
+	if (buffer) {
+		data = buffer + off;
+
+		data[0] = (v & 0xffffffffUL);
+		data[1] = (v >> 32);
+	}
+
+	return sizeof(*data) * 2;
+}
+
+/**
+ * convert_to_gcda - convert profiling data set to gcda file format
+ * @buffer: the buffer to store file data or %NULL if no data should be stored
+ * @info: profiling data set to be converted
+ *
+ * Returns the number of bytes that were/would have been stored into the buffer.
+ */
+static size_t convert_to_gcda(char *buffer, struct gcov_info *info)
+{
+	struct gcov_fn_info *fi_ptr;
+=====================================================================
+Found a 29 line (143 tokens) duplication in the following files: 
+Starting at line 1577 of /Users/macbook/Downloads/linux-master/kernel/dma/debug.c
+Starting at line 1610 of /Users/macbook/Downloads/linux-master/kernel/dma/debug.c
+
+void debug_dma_sync_sg_for_cpu(struct device *dev, struct scatterlist *sg,
+			       int nelems, int direction)
+{
+	struct scatterlist *s;
+	int mapped_ents = 0, i;
+
+	if (unlikely(dma_debug_disabled()))
+		return;
+
+	for_each_sg(sg, s, nelems, i) {
+
+		struct dma_debug_entry ref = {
+			.type           = dma_debug_sg,
+			.dev            = dev,
+			.pfn		= page_to_pfn(sg_page(s)),
+			.offset		= s->offset,
+			.dev_addr       = sg_dma_address(s),
+			.size           = sg_dma_len(s),
+			.direction      = direction,
+			.sg_call_ents   = nelems,
+		};
+
+		if (!i)
+			mapped_ents = get_nr_mapped_entries(dev, &ref);
+
+		if (i >= mapped_ents)
+			break;
+
+		check_sync(dev, &ref, true);
+=====================================================================
+Found a 34 line (137 tokens) duplication in the following files: 
+Starting at line 703 of /Users/macbook/Downloads/linux-master/kernel/irq/chip.c
+Starting at line 1263 of /Users/macbook/Downloads/linux-master/kernel/irq/chip.c
+
+	raw_spin_lock(&desc->lock);
+
+	if (!irq_may_run(desc))
+		goto out;
+
+	desc->istate &= ~(IRQS_REPLAY | IRQS_WAITING);
+
+	/*
+	 * If its disabled or no action available
+	 * then mask it and get out of here:
+	 */
+	if (unlikely(!desc->action || irqd_irq_disabled(&desc->irq_data))) {
+		desc->istate |= IRQS_PENDING;
+		mask_irq(desc);
+		goto out;
+	}
+
+	kstat_incr_irqs_this_cpu(desc);
+	if (desc->istate & IRQS_ONESHOT)
+		mask_irq(desc);
+
+	preflow_handler(desc);
+	handle_irq_event(desc);
+
+	cond_unmask_eoi_irq(desc, chip);
+
+	raw_spin_unlock(&desc->lock);
+	return;
+out:
+	if (!(chip->flags & IRQCHIP_EOI_IF_HANDLED))
+		chip->irq_eoi(&desc->irq_data);
+	raw_spin_unlock(&desc->lock);
+}
+EXPORT_SYMBOL_GPL(handle_fasteoi_irq);
+=====================================================================
+Found a 24 line (134 tokens) duplication in the following files: 
+Starting at line 1207 of /Users/macbook/Downloads/linux-master/kernel/bpf/hashtab.c
+Starting at line 1239 of /Users/macbook/Downloads/linux-master/kernel/bpf/hashtab.c
+
+static int htab_map_delete_elem(struct bpf_map *map, void *key)
+{
+	struct bpf_htab *htab = container_of(map, struct bpf_htab, map);
+	struct hlist_nulls_head *head;
+	struct bucket *b;
+	struct htab_elem *l;
+	unsigned long flags;
+	u32 hash, key_size;
+	int ret = -ENOENT;
+
+	WARN_ON_ONCE(!rcu_read_lock_held());
+
+	key_size = map->key_size;
+
+	hash = htab_map_hash(key, key_size, htab->hashrnd);
+	b = __select_bucket(htab, hash);
+	head = &b->head;
+
+	flags = htab_lock_bucket(htab, b);
+
+	l = lookup_elem_raw(head, hash, key, key_size);
+
+	if (l) {
+		hlist_nulls_del_rcu(&l->hash_node);
+=====================================================================
+Found a 26 line (130 tokens) duplication in the following files: 
+Starting at line 728 of /Users/macbook/Downloads/linux-master/kernel/power/swap.c
+Starting at line 1221 of /Users/macbook/Downloads/linux-master/kernel/power/swap.c
+
+			pr_err("Cannot start compression threads\n");
+			ret = -ENOMEM;
+			goto out_clean;
+		}
+	}
+
+	/*
+	 * Start the CRC32 thread.
+	 */
+	init_waitqueue_head(&crc->go);
+	init_waitqueue_head(&crc->done);
+
+	handle->crc32 = 0;
+	crc->crc32 = &handle->crc32;
+	for (thr = 0; thr < nr_threads; thr++) {
+		crc->unc[thr] = data[thr].unc;
+		crc->unc_len[thr] = &data[thr].unc_len;
+	}
+
+	crc->thr = kthread_run(crc32_threadfn, crc, "image_crc32");
+	if (IS_ERR(crc->thr)) {
+		crc->thr = NULL;
+		pr_err("Cannot start CRC32 thread\n");
+		ret = -ENOMEM;
+		goto out_clean;
+	}
+=====================================================================
+Found a 25 line (129 tokens) duplication in the following files: 
+Starting at line 69 of /Users/macbook/Downloads/linux-master/kernel/trace/trace_output.c
+Starting at line 133 of /Users/macbook/Downloads/linux-master/kernel/trace/trace_output.c
+
+	unsigned long mask;
+	const char *str;
+	const char *ret = trace_seq_buffer_ptr(p);
+	int i, first = 1;
+
+	for (i = 0;  flag_array[i].name && flags; i++) {
+
+		mask = flag_array[i].mask;
+		if ((flags & mask) != mask)
+			continue;
+
+		str = flag_array[i].name;
+		flags &= ~mask;
+		if (!first && delim)
+			trace_seq_puts(p, delim);
+		else
+			first = 0;
+		trace_seq_puts(p, str);
+	}
+
+	/* check for left over flags */
+	if (flags) {
+		if (!first && delim)
+			trace_seq_puts(p, delim);
+		trace_seq_printf(p, "0x%lx", flags);
+=====================================================================
+Found a 25 line (127 tokens) duplication in the following files: 
+Starting at line 1341 of /Users/macbook/Downloads/linux-master/kernel/trace/trace_kprobe.c
+Starting at line 1389 of /Users/macbook/Downloads/linux-master/kernel/trace/trace_kprobe.c
+
+	struct trace_event_buffer fbuffer;
+	int dsize;
+
+	WARN_ON(call != trace_file->event_call);
+
+	if (trace_trigger_soft_disabled(trace_file))
+		return;
+
+	local_save_flags(fbuffer.flags);
+	fbuffer.pc = preempt_count();
+	fbuffer.trace_file = trace_file;
+
+	dsize = __get_data_size(&tk->tp, regs);
+
+	fbuffer.event =
+		trace_event_buffer_lock_reserve(&fbuffer.buffer, trace_file,
+					call->event.type,
+					sizeof(*entry) + tk->tp.size + dsize,
+					fbuffer.flags, fbuffer.pc);
+	if (!fbuffer.event)
+		return;
+
+	fbuffer.regs = regs;
+	entry = fbuffer.entry = ring_buffer_event_data(fbuffer.event);
+	entry->ip = (unsigned long)tk->rp.kp.addr;
+=====================================================================
+Found a 23 line (126 tokens) duplication in the following files: 
+Starting at line 199 of /Users/macbook/Downloads/linux-master/kernel/time/time.c
+Starting at line 243 of /Users/macbook/Downloads/linux-master/kernel/time/time.c
+
+SYSCALL_DEFINE2(settimeofday, struct __kernel_old_timeval __user *, tv,
+		struct timezone __user *, tz)
+{
+	struct timespec64 new_ts;
+	struct timezone new_tz;
+
+	if (tv) {
+		if (get_user(new_ts.tv_sec, &tv->tv_sec) ||
+		    get_user(new_ts.tv_nsec, &tv->tv_usec))
+			return -EFAULT;
+
+		if (new_ts.tv_nsec > USEC_PER_SEC || new_ts.tv_nsec < 0)
+			return -EINVAL;
+
+		new_ts.tv_nsec *= NSEC_PER_USEC;
+	}
+	if (tz) {
+		if (copy_from_user(&new_tz, tz, sizeof(*tz)))
+			return -EFAULT;
+	}
+
+	return do_sys_settimeofday64(tv ? &new_ts : NULL, tz ? &new_tz : NULL);
+}
+=====================================================================
+Found a 19 line (125 tokens) duplication in the following files: 
+Starting at line 1557 of /Users/macbook/Downloads/linux-master/kernel/exit.c
+Starting at line 1683 of /Users/macbook/Downloads/linux-master/kernel/exit.c
+
+	}
+	if (!infop)
+		return err;
+
+	if (!user_access_begin(infop, sizeof(*infop)))
+		return -EFAULT;
+
+	unsafe_put_user(signo, &infop->si_signo, Efault);
+	unsafe_put_user(0, &infop->si_errno, Efault);
+	unsafe_put_user(info.cause, &infop->si_code, Efault);
+	unsafe_put_user(info.pid, &infop->si_pid, Efault);
+	unsafe_put_user(info.uid, &infop->si_uid, Efault);
+	unsafe_put_user(info.status, &infop->si_status, Efault);
+	user_access_end();
+	return err;
+Efault:
+	user_access_end();
+	return -EFAULT;
+}
+=====================================================================
+Found a 24 line (124 tokens) duplication in the following files: 
+Starting at line 1077 of /Users/macbook/Downloads/linux-master/kernel/bpf/hashtab.c
+Starting at line 1129 of /Users/macbook/Downloads/linux-master/kernel/bpf/hashtab.c
+
+static int __htab_percpu_map_update_elem(struct bpf_map *map, void *key,
+					 void *value, u64 map_flags,
+					 bool onallcpus)
+{
+	struct bpf_htab *htab = container_of(map, struct bpf_htab, map);
+	struct htab_elem *l_new = NULL, *l_old;
+	struct hlist_nulls_head *head;
+	unsigned long flags;
+	struct bucket *b;
+	u32 key_size, hash;
+	int ret;
+
+	if (unlikely(map_flags > BPF_EXIST))
+		/* unknown flags */
+		return -EINVAL;
+
+	WARN_ON_ONCE(!rcu_read_lock_held());
+
+	key_size = map->key_size;
+
+	hash = htab_map_hash(key, key_size, htab->hashrnd);
+
+	b = __select_bucket(htab, hash);
+	head = &b->head;
+=====================================================================
+Found a 14 line (110 tokens) duplication in the following files: 
+Starting at line 166 of /Users/macbook/Downloads/linux-master/kernel/trace/trace_entries.h
+Starting at line 184 of /Users/macbook/Downloads/linux-master/kernel/trace/trace_entries.h
+
+		__field(	int,		size	)
+		__array(	unsigned long,	caller,	FTRACE_STACK_ENTRIES	)
+	),
+
+	F_printk("\t=> %ps\n\t=> %ps\n\t=> %ps\n"
+		 "\t=> %ps\n\t=> %ps\n\t=> %ps\n"
+		 "\t=> %ps\n\t=> %ps\n",
+		 (void *)__entry->caller[0], (void *)__entry->caller[1],
+		 (void *)__entry->caller[2], (void *)__entry->caller[3],
+		 (void *)__entry->caller[4], (void *)__entry->caller[5],
+		 (void *)__entry->caller[6], (void *)__entry->caller[7])
+);
+
+FTRACE_ENTRY(user_stack, userstack_entry,
+=====================================================================
+Found a 13 line (108 tokens) duplication in the following files: 
+Starting at line 257 of /Users/macbook/Downloads/linux-master/kernel/sysctl-test.c
+Starting at line 287 of /Users/macbook/Downloads/linux-master/kernel/sysctl-test.c
+
+	char input[] = "9";
+	size_t len = sizeof(input) - 1;
+	loff_t pos = 0;
+	char *buffer = kunit_kzalloc(test, len, GFP_USER);
+	char __user *user_buffer = (char __user *)buffer;
+
+	memcpy(buffer, input, len);
+
+	KUNIT_EXPECT_EQ(test, 0, proc_dointvec(&table, KUNIT_PROC_WRITE,
+					       user_buffer, &len, &pos));
+	KUNIT_EXPECT_EQ(test, sizeof(input) - 1, len);
+	KUNIT_EXPECT_EQ(test, sizeof(input) - 1, (size_t)pos);
+	KUNIT_EXPECT_EQ(test, 9, *((int *)table.data));
+=====================================================================
+Found a 10 line (107 tokens) duplication in the following files: 
+Starting at line 2394 of /Users/macbook/Downloads/linux-master/kernel/module.c
+Starting at line 2427 of /Users/macbook/Downloads/linux-master/kernel/module.c
+
+	pr_debug("Core section allocation order:\n");
+	for (m = 0; m < ARRAY_SIZE(masks); ++m) {
+		for (i = 0; i < info->hdr->e_shnum; ++i) {
+			Elf_Shdr *s = &info->sechdrs[i];
+			const char *sname = info->secstrings + s->sh_name;
+
+			if ((s->sh_flags & masks[m][0]) != masks[m][0]
+			    || (s->sh_flags & masks[m][1])
+			    || s->sh_entsize != ~0UL
+			    || strstarts(sname, ".init"))
+=====================================================================
+Found a 22 line (107 tokens) duplication in the following files: 
+Starting at line 1934 of /Users/macbook/Downloads/linux-master/kernel/trace/trace_events_hist.c
+Starting at line 2010 of /Users/macbook/Downloads/linux-master/kernel/trace/trace_events_hist.c
+
+			struct synth_field *field = state.event->fields[i];
+
+			switch (field->size) {
+			case 1:
+				*(u8 *)&state.entry->fields[n_u64] = (u8)val;
+				break;
+
+			case 2:
+				*(u16 *)&state.entry->fields[n_u64] = (u16)val;
+				break;
+
+			case 4:
+				*(u32 *)&state.entry->fields[n_u64] = (u32)val;
+				break;
+
+			default:
+				state.entry->fields[n_u64] = val;
+				break;
+			}
+			n_u64++;
+		}
+	}
+=====================================================================
+Found a 26 line (106 tokens) duplication in the following files: 
+Starting at line 2140 of /Users/macbook/Downloads/linux-master/kernel/bpf/btf.c
+Starting at line 2405 of /Users/macbook/Downloads/linux-master/kernel/bpf/btf.c
+
+static int btf_struct_check_member(struct btf_verifier_env *env,
+				   const struct btf_type *struct_type,
+				   const struct btf_member *member,
+				   const struct btf_type *member_type)
+{
+	u32 struct_bits_off = member->offset;
+	u32 struct_size, bytes_offset;
+
+	if (BITS_PER_BYTE_MASKED(struct_bits_off)) {
+		btf_verifier_log_member(env, struct_type, member,
+					"Member is not byte aligned");
+		return -EINVAL;
+	}
+
+	struct_size = struct_type->size;
+	bytes_offset = BITS_ROUNDDOWN_BYTES(struct_bits_off);
+	if (struct_size - bytes_offset < member_type->size) {
+		btf_verifier_log_member(env, struct_type, member,
+					"Member exceeds struct_size");
+		return -EINVAL;
+	}
+
+	return 0;
+}
+
+static s32 btf_struct_check_meta(struct btf_verifier_env *env,
+=====================================================================
+Found a 21 line (102 tokens) duplication in the following files: 
+Starting at line 1595 of /Users/macbook/Downloads/linux-master/kernel/bpf/btf.c
+Starting at line 1620 of /Users/macbook/Downloads/linux-master/kernel/bpf/btf.c
+
+static int btf_modifier_check_member(struct btf_verifier_env *env,
+				     const struct btf_type *struct_type,
+				     const struct btf_member *member,
+				     const struct btf_type *member_type)
+{
+	const struct btf_type *resolved_type;
+	u32 resolved_type_id = member->type;
+	struct btf_member resolved_member;
+	struct btf *btf = env->btf;
+
+	resolved_type = btf_type_id_size(btf, &resolved_type_id, NULL);
+	if (!resolved_type) {
+		btf_verifier_log_member(env, struct_type, member,
+					"Invalid member");
+		return -EINVAL;
+	}
+
+	resolved_member = *member;
+	resolved_member.type = resolved_type_id;
+
+	return btf_type_ops(resolved_type)->check_member(env, struct_type,
+=====================================================================
+Found a 24 line (102 tokens) duplication in the following files: 
+Starting at line 545 of /Users/macbook/Downloads/linux-master/kernel/trace/trace_events_trigger.c
+Starting at line 1510 of /Users/macbook/Downloads/linux-master/kernel/trace/trace_events_trigger.c
+
+		if (test->cmd_ops->trigger_type == data->cmd_ops->trigger_type) {
+			ret = -EEXIST;
+			goto out;
+		}
+	}
+
+	if (data->ops->init) {
+		ret = data->ops->init(data->ops, data);
+		if (ret < 0)
+			goto out;
+	}
+
+	list_add_rcu(&data->list, &file->triggers);
+	ret++;
+
+	update_cond_flag(file);
+	if (trace_event_trigger_enable_disable(file, 1) < 0) {
+		list_del_rcu(&data->list);
+		update_cond_flag(file);
+		ret--;
+	}
+out:
+	return ret;
+}
+=====================================================================
+Found a 18 line (101 tokens) duplication in the following files: 
+Starting at line 306 of /Users/macbook/Downloads/linux-master/kernel/sysctl-test.c
+Starting at line 344 of /Users/macbook/Downloads/linux-master/kernel/sysctl-test.c
+
+static void sysctl_test_api_dointvec_write_single_less_int_min(
+		struct kunit *test)
+{
+	int data = 0;
+	struct ctl_table table = {
+		.procname = "foo",
+		.data		= &data,
+		.maxlen		= sizeof(int),
+		.mode		= 0644,
+		.proc_handler	= proc_dointvec,
+		.extra1		= &i_zero,
+		.extra2         = &i_one_hundred,
+	};
+	size_t max_len = 32, len = max_len;
+	loff_t pos = 0;
+	char *buffer = kunit_kzalloc(test, max_len, GFP_USER);
+	char __user *user_buffer = (char __user *)buffer;
+	unsigned long abs_of_less_than_min = (unsigned long)INT_MAX
+=====================================================================
+Found a 24 line (100 tokens) duplication in the following files: 
+Starting at line 699 of /Users/macbook/Downloads/linux-master/kernel/irq/chip.c
+Starting at line 1206 of /Users/macbook/Downloads/linux-master/kernel/irq/chip.c
+
+void handle_fasteoi_irq(struct irq_desc *desc)
+{
+	struct irq_chip *chip = desc->irq_data.chip;
+
+	raw_spin_lock(&desc->lock);
+
+	if (!irq_may_run(desc))
+		goto out;
+
+	desc->istate &= ~(IRQS_REPLAY | IRQS_WAITING);
+
+	/*
+	 * If its disabled or no action available
+	 * then mask it and get out of here:
+	 */
+	if (unlikely(!desc->action || irqd_irq_disabled(&desc->irq_data))) {
+		desc->istate |= IRQS_PENDING;
+		mask_irq(desc);
+		goto out;
+	}
+
+	kstat_incr_irqs_this_cpu(desc);
+	if (desc->istate & IRQS_ONESHOT)
+		mask_irq(desc);
