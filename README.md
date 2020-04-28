@@ -175,8 +175,8 @@ Le Memory Manager utilise le virtual file system afin de supporter le swapping (
 
 ## Commandes relatives aux modules
 
-La commande linux qui permet d’obtenir la liste des modules chargés est “lsmod”. Cette commande liste aussi la mémoire utilisé par le module résident en bytes “Size” et le nombre d’instance utilisés “Used by” , si le nombre est 0 le module n’est pas utilisé actuellement.
-Le nom après le nombre représente les informations de ce qu’utilise le module. 
+La commande linux qui permet d’obtenir la liste des modules chargés est “lsmod”. Cette commande liste aussi la mémoire utilisée par le module résident en bytes “Size” et le nombre d’instance utilisés “Used by” , si le nombre est 0 le module n’est pas utilisé actuellement.
+Le nom après le nombre représente les informations de ce qu’utilise le module (autre module, fichier...). 
 
 ```bash
 lsmod
@@ -233,7 +233,7 @@ Le nombre de fichiers considérés comme des “hotspots” est assez faible par
 
 ### Cppcheck
 
-Ensuite nous avons utilisés cppcheck, outil en ligne de commande qui va permettre de détecter une multitudes de différents types de bugs dans le code comme :
+Ensuite nous avons utilisé cppcheck, outil en ligne de commande qui va permettre de détecter une multitudes de différents types de bugs dans le code comme :
 
 - Undefined behaviour
 - Dead pointers
@@ -248,21 +248,29 @@ Ensuite nous avons utilisés cppcheck, outil en ligne de commande qui va permett
 - Uninitialized variables
 - Writing const data
 
+```bash
+cppcheck linux-master
+```
+
 Vous trouverez le fichier de résultat de l'analyse [ici](./cppcheck.txt).
 
 ### CPD
 
-Le dernier outil d'analyse utilisée est CPD, il permet de trouver les duplications de codes. En effet cette analyse est importante car la duplication de code peut être potentiellement grave et affecter la maintenabilité du système.
+Le dernier outil d'analyse utilisée est CPD, il permet de trouver les duplications de codes. En effet, cette analyse est importante car la duplication de code peut être potentiellement grave et affecter la maintenabilité du système.
 
 Avec cet outil impossible d'analyser tout le projet, cela requiert beaucoup trop de ressources et/ou de temps. L'analyse est donc effectuée pour les fichiers présent dans kernel (463 fichiers).
 
+```bash
+pmd-bin-6.23.0/bin/run.sh cpd --minimum-tokens 100 --skip-lexical-errors --files linux-master/kernel
+```
+
 Vous trouverez le fichier de résultat de l'analyse [ici](./cpd_report_kernel.txt).
 
-On trouve quelques duplications de code mais il s'agit principalement de boucles.
+On trouve quelques duplications de code, mais il s'agit principalement de boucles.
 
-### Conclusion de l'analyse
+### Conclusion de l'analyse du code
 
-Linux est un OS avec une bonne qualité de code grâce à sa communauté active...
+On trouve ici des résultats très bon pour Linux en terme de qualité de code grâce principalement à sa communauté, en effet des milliers de personnes utilisent et améliorent le code depuis de nombreuses années. L'architecture est claire et bien découpée notamment grâce aux modules et le code source est très bien documenté.
 
 ## Sources 
 - Professional Linux Kernel Architecture | Wolfgang Mauerer | 2008 : <br>
