@@ -1,0 +1,735 @@
+
+Downloads/linux-master/drivers/net/ethernet/socionext/sni_ave.c:377:9: error: Array index out of bounds; buffer 'mac_addr' is accessed at offset 0. [ctuArrayIndex]
+ writel(mac_addr[0] | mac_addr[1] << 8 |
+        ^
+Downloads/linux-master/drivers/net/ethernet/socionext/sni_ave.c:1481:24: note: Calling function ave_pfsel_set_macaddr, 3rd argument is uninitialized
+  ave_pfsel_set_macaddr(ndev, AVE_PFNUM_MULTICAST,
+                       ^
+Downloads/linux-master/drivers/net/ethernet/socionext/sni_ave.c:1024:2: note: Calling function ave_hw_write_macaddr, 2nd argument is uninitialized
+ ave_hw_write_macaddr(ndev, mac_addr,
+ ^
+Downloads/linux-master/drivers/net/ethernet/socionext/sni_ave.c:377:9: note: Using argument mac_addr
+ writel(mac_addr[0] | mac_addr[1] << 8 |
+        ^
+Downloads/linux-master/drivers/net/ethernet/ti/netcp_core.c:210:2: error: Array index out of bounds; buffer 'x' is accessed at offset 0. [ctuArrayIndex]
+ x[0] = (addr1 & 0x0000ff00) >> 8;
+ ^
+Downloads/linux-master/drivers/net/ethernet/ti/netcp_core.c:2030:25: note: Calling function emac_arch_get_mac_addr, 1st argument is uninitialized
+  emac_arch_get_mac_addr(efuse_mac_addr, efuse, efuse_mac);
+                        ^
+Downloads/linux-master/drivers/net/ethernet/ti/netcp_core.c:210:2: note: Using argument x
+ x[0] = (addr1 & 0x0000ff00) >> 8;
+ ^
+Downloads/linux-master/drivers/scsi/ch.c:193:13: error: Array index out of bounds; buffer 'cmd' is accessed at offset 0. [ctuArrayIndex]
+ timeout = (cmd[0] == INITIALIZE_ELEMENT_STATUS)
+            ^
+Downloads/linux-master/drivers/scsi/ch.c:255:31: note: Calling function ch_do_scsi, 2nd argument is uninitialized
+ if (0 == (result = ch_do_scsi(ch, cmd, 12,
+                              ^
+Downloads/linux-master/drivers/scsi/ch.c:193:13: note: Using argument cmd
+ timeout = (cmd[0] == INITIALIZE_ELEMENT_STATUS)
+            ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:6191:6: error: Null pointer dereference: dm_state [ctunullpointer]
+ if (dm_state->scaling != old_dm_state->scaling)
+     ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7570:76: note: Assignment 'dm_old_conn_state=NULL', assigned value is 0
+
+                                                                           ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7750:32: note: Calling function is_scaling_state_different, 1st argument is null
+ if (is_scaling_state_different(dm_old_conn_state, dm_new_conn_state))
+                               ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:6191:6: note: Dereferencing argument dm_state that is null
+ if (dm_state->scaling != old_dm_state->scaling)
+     ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:6191:27: error: Null pointer dereference: old_dm_state [ctunullpointer]
+ if (dm_state->scaling != old_dm_state->scaling)
+                          ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7570:49: note: Assignment 'dm_new_conn_state=NULL', assigned value is 0
+
+                                                ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7750:32: note: Calling function is_scaling_state_different, 2nd argument is null
+ if (is_scaling_state_different(dm_old_conn_state, dm_new_conn_state))
+                               ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:6191:27: note: Dereferencing argument old_dm_state that is null
+ if (dm_state->scaling != old_dm_state->scaling)
+                          ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7515:4: error: Null pointer dereference: new_con_state [ctunullpointer]
+   to_amdgpu_dm_connector(new_con_state->base.connector);
+   ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7570:49: note: Assignment 'dm_new_conn_state=NULL', assigned value is 0
+
+                                                ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7769:30: note: Calling function get_freesync_config_for_crtc, 2nd argument is null
+ get_freesync_config_for_crtc(dm_new_crtc_state,
+                             ^
+Downloads/linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7515:4: note: Dereferencing argument new_con_state that is null
+   to_amdgpu_dm_connector(new_con_state->base.connector);
+   ^
+Downloads/linux-master/drivers/hid/i2c-hid/i2c-hid-core.c:234:29: error: Null pointer dereference: args [ctunullpointer]
+ memcpy(cmd->data + length, args, args_len);
+                            ^
+Downloads/linux-master/drivers/hid/i2c-hid/i2c-hid-core.c:284:26: note: Calling function __i2c_hid_command, 5th argument is null
+ return __i2c_hid_command(client, command, 0, 0, NULL, 0,
+                         ^
+Downloads/linux-master/drivers/hid/i2c-hid/i2c-hid-core.c:234:29: note: Dereferencing argument args that is null
+ memcpy(cmd->data + length, args, args_len);
+                            ^
+Downloads/linux-master/drivers/infiniband/hw/hns/hns_roce_hw_v2.c:3603:24: error: Null pointer dereference: attr [ctunullpointer]
+ hr_qp->access_flags = attr->qp_access_flags;
+                       ^
+Downloads/linux-master/drivers/infiniband/hw/hns/hns_roce_hw_v2.c:4735:45: note: Calling function 'hns_roce_v2_modify_qp', 2nd argument 'NULL' value is 0
+
+                                            ^
+Downloads/linux-master/drivers/infiniband/hw/hns/hns_roce_hw_v2.c:4478:34: note: Calling function hns_roce_v2_set_abs_fields, 2nd argument is null
+ ret = hns_roce_v2_set_abs_fields(ibqp, attr, attr_mask, cur_state,
+                                 ^
+Downloads/linux-master/drivers/infiniband/hw/hns/hns_roce_hw_v2.c:4242:3: note: Calling function modify_qp_reset_to_init, 2nd argument is null
+  modify_qp_reset_to_init(ibqp, attr, attr_mask, context,
+  ^
+Downloads/linux-master/drivers/infiniband/hw/hns/hns_roce_hw_v2.c:3603:24: note: Dereferencing argument attr that is null
+ hr_qp->access_flags = attr->qp_access_flags;
+                       ^
+Downloads/linux-master/drivers/media/pci/ngene/ngene-i2c.c:39:31: error: Null pointer dereference: out [ctunullpointer]
+ memcpy(com.cmd.I2CRead.Data, out, outlen);
+                              ^
+Downloads/linux-master/drivers/media/pci/ngene/ngene-i2c.c:122:30: note: Calling function ngene_command_i2c_read, 3rd argument is null
+  if (!ngene_command_i2c_read(dev, msg[0].addr, NULL, 0,
+                             ^
+Downloads/linux-master/drivers/media/pci/ngene/ngene-i2c.c:39:31: note: Dereferencing argument out that is null
+ memcpy(com.cmd.I2CRead.Data, out, outlen);
+                              ^
+Downloads/linux-master/drivers/mmc/host/sdhci.c:887:26: error: Null pointer dereference: cmd [ctunullpointer]
+ struct mmc_data *data = cmd->data;
+                         ^
+Downloads/linux-master/drivers/mmc/host/sdhci.c:3674:26: note: Calling function 'sdhci_set_timeout', 2nd argument 'NULL' value is 0
+
+                         ^
+Downloads/linux-master/drivers/mmc/host/sdhci.c:1030:29: note: Calling function '__sdhci_set_timeout', 2nd argument 'cmd' value is 0
+
+                            ^
+Downloads/linux-master/drivers/mmc/host/sdhci.c:1015:24: note: Calling function sdhci_calc_sw_timeout, 2nd argument is null
+  sdhci_calc_sw_timeout(host, cmd);
+                       ^
+Downloads/linux-master/drivers/mmc/host/sdhci.c:887:26: note: Dereferencing argument cmd that is null
+ struct mmc_data *data = cmd->data;
+                         ^
+Downloads/linux-master/drivers/mtd/ubi/eba.c:849:32: error: Null pointer dereference: buf [ctunullpointer]
+ memcpy(ubi->peb_buf + offset, buf, len);
+                               ^
+Downloads/linux-master/drivers/mtd/ubi/eba.c:1208:44: note: Calling function 'ubi_eba_write_leb', 4th argument 'NULL' value is 0
+
+                                           ^
+Downloads/linux-master/drivers/mtd/ubi/eba.c:1037:22: note: Calling function recover_peb, 5th argument is null
+    err = recover_peb(ubi, pnum, vol_id, lnum, buf,
+                     ^
+Downloads/linux-master/drivers/mtd/ubi/eba.c:917:9: note: Calling function try_recover_peb, 4th argument is null
+  err = try_recover_peb(vol, pnum, lnum, buf, offset, len, vidb,
+        ^
+Downloads/linux-master/drivers/mtd/ubi/eba.c:849:32: note: Dereferencing argument buf that is null
+ memcpy(ubi->peb_buf + offset, buf, len);
+                               ^
+Downloads/linux-master/drivers/net/ethernet/huawei/hinic/hinic_hw_cmdq.c:179:32: error: Null pointer dereference: buf_out [ctunullpointer]
+ hinic_set_sge(&sge_resp->sge, buf_out->dma_addr, buf_out->size);
+                               ^
+Downloads/linux-master/drivers/net/ethernet/huawei/hinic/hinic_hw_cmdq.c:378:19: note: Calling function cmdq_set_lcmd_wqe, 4th argument is null
+ cmdq_set_lcmd_wqe(&cmdq_wqe, CMDQ_CMD_SYNC_DIRECT_RESP, buf_in, NULL,
+                  ^
+Downloads/linux-master/drivers/net/ethernet/huawei/hinic/hinic_hw_cmdq.c:261:3: note: Calling function cmdq_set_sge_completion, 2nd argument is null
+  cmdq_set_sge_completion(&wqe_lcmd->completion, buf_out);
+  ^
+Downloads/linux-master/drivers/net/ethernet/huawei/hinic/hinic_hw_cmdq.c:179:32: note: Dereferencing argument buf_out that is null
+ hinic_set_sge(&sge_resp->sge, buf_out->dma_addr, buf_out->size);
+                               ^
+Downloads/linux-master/drivers/net/ethernet/intel/igb/e1000_mac.c:479:30: error: Null pointer dereference: mc_addr [ctunullpointer]
+ hash_value = hash_mask & (((mc_addr[4] >> (8 - bit_shift)) |
+                             ^
+Downloads/linux-master/drivers/net/ethernet/intel/igb/igb_main.c:4849:26: note: Calling function igb_update_mc_addr_list, 2nd argument is null
+  igb_update_mc_addr_list(hw, NULL, 0);
+                         ^
+Downloads/linux-master/drivers/net/ethernet/intel/igb/e1000_mac.c:505:16: note: Calling function igb_hash_mc_addr, 2nd argument is null
+  hash_value = igb_hash_mc_addr(hw, mc_addr_list);
+               ^
+Downloads/linux-master/drivers/net/ethernet/intel/igb/e1000_mac.c:479:30: note: Dereferencing argument mc_addr that is null
+ hash_value = hash_mask & (((mc_addr[4] >> (8 - bit_shift)) |
+                             ^
+Downloads/linux-master/drivers/net/ethernet/intel/igc/igc_mac.c:851:30: error: Null pointer dereference: mc_addr [ctunullpointer]
+ hash_value = hash_mask & (((mc_addr[4] >> (8 - bit_shift)) |
+                             ^
+Downloads/linux-master/drivers/net/ethernet/intel/igc/igc_main.c:848:26: note: Calling function igc_update_mc_addr_list, 2nd argument is null
+  igc_update_mc_addr_list(hw, NULL, 0);
+                         ^
+Downloads/linux-master/drivers/net/ethernet/intel/igc/igc_mac.c:877:16: note: Calling function igc_hash_mc_addr, 2nd argument is null
+  hash_value = igc_hash_mc_addr(hw, mc_addr_list);
+               ^
+Downloads/linux-master/drivers/net/ethernet/intel/igc/igc_mac.c:851:30: note: Dereferencing argument mc_addr that is null
+ hash_value = hash_mask & (((mc_addr[4] >> (8 - bit_shift)) |
+
+linux-master/tools/testing/selftests/net/mptcp/mptcp_connect.c:731:8: error: Uninitialized variable: foo [uninitvar]
+ srand(foo);
+       ^
+linux-master/tools/testing/selftests/net/tls.c:310:32: error: Memory is allocated but not initialized: mem [uninitdata]
+  struct iovec vec = { (void *)mem, send_len };
+                               ^
+linux-master/tools/testing/selftests/pidfd/pidfd_test.c:505:6: error: Uninitialized variable: ret [uninitvar]
+ if (ret == pid)
+     ^
+linux-master/tools/testing/selftests/powerpc/copyloops/exc_validate.c:28:14: error: Comparing pointers that point to different objects [comparePointers]
+ while (ex_p < (unsigned long *)__stop___ex_table) {
+             ^
+linux-master/tools/testing/selftests/powerpc/copyloops/exc_validate.c:10:13: note: Variable declared here.
+extern char __start___ex_table[];
+            ^
+linux-master/tools/testing/selftests/powerpc/copyloops/exc_validate.c:26:41: note: Array decayed to pointer here.
+ unsigned long *ex_p = (unsigned long *)__start___ex_table;
+                                        ^
+linux-master/tools/testing/selftests/powerpc/copyloops/exc_validate.c:11:13: note: Variable declared here.
+extern char __stop___ex_table[];
+            ^
+linux-master/tools/testing/selftests/powerpc/copyloops/exc_validate.c:28:33: note: Array decayed to pointer here.
+ while (ex_p < (unsigned long *)__stop___ex_table) {
+                                ^
+linux-master/tools/testing/selftests/powerpc/copyloops/exc_validate.c:28:14: note: Comparing pointers that point to different objects
+ while (ex_p < (unsigned long *)__stop___ex_table) {
+             ^
+linux-master/tools/testing/selftests/powerpc/mm/bad_accesses.c:52:35: error: Uninitialized variable: x [uninitvar]
+  printf("Bad - no SEGV! (%c)\n", x);
+                                  ^
+linux-master/tools/testing/selftests/powerpc/mm/tlbie_test.c:318:10: error: Uninitialized variable: path [uninitvar]
+  remove(path);
+         ^
+linux-master/tools/testing/selftests/powerpc/primitives/load_unaligned_zeropad.c:76:15: error: Comparing pointers that point to different objects [comparePointers]
+ while (entry < (struct extbl_entry *)__stop___ex_table) {
+              ^
+linux-master/tools/testing/selftests/powerpc/primitives/load_unaligned_zeropad.c:61:13: note: Variable declared here.
+extern char __start___ex_table[];
+            ^
+linux-master/tools/testing/selftests/powerpc/primitives/load_unaligned_zeropad.c:74:52: note: Array decayed to pointer here.
+ struct extbl_entry *entry = (struct extbl_entry *)__start___ex_table;
+                                                   ^
+linux-master/tools/testing/selftests/powerpc/primitives/load_unaligned_zeropad.c:62:13: note: Variable declared here.
+extern char __stop___ex_table[];
+            ^
+linux-master/tools/testing/selftests/powerpc/primitives/load_unaligned_zeropad.c:76:39: note: Array decayed to pointer here.
+ while (entry < (struct extbl_entry *)__stop___ex_table) {
+                                      ^
+linux-master/tools/testing/selftests/powerpc/primitives/load_unaligned_zeropad.c:76:15: note: Comparing pointers that point to different objects
+ while (entry < (struct extbl_entry *)__stop___ex_table) {
+              ^
+linux-master/tools/testing/selftests/powerpc/ptrace/ptrace.h:486:3: error: Memory leak: regs [memleak]
+  return TEST_FAIL;
+  ^
+linux-master/tools/testing/selftests/powerpc/ptrace/ptrace.h:494:2: error: Memory leak: regs [memleak]
+ return TEST_PASS;
+ ^
+linux-master/tools/testing/selftests/powerpc/ptrace/ptrace.h:514:3: error: Memory leak: regs [memleak]
+  return TEST_FAIL;
+  ^
+linux-master/tools/testing/selftests/powerpc/ptrace/ptrace.h:666:3: error: Memory leak: regs [memleak]
+  return TEST_FAIL;
+  ^
+linux-master/tools/testing/selftests/powerpc/ptrace/ptrace.h:672:2: error: Memory leak: regs [memleak]
+ return TEST_PASS;
+ ^
+linux-master/tools/testing/selftests/powerpc/ptrace/core-pkey.c:165:3: error: Null pointer dereference: ptr [nullPointer]
+ *ptr = 1;
+  ^
+linux-master/tools/testing/selftests/powerpc/ptrace/core-pkey.c:164:8: note: Assignment 'ptr=0', assigned value is 0
+ ptr = 0;
+       ^
+linux-master/tools/testing/selftests/powerpc/ptrace/core-pkey.c:165:3: note: Null pointer dereference
+ *ptr = 1;
+  ^
+linux-master/tools/testing/selftests/powerpc/tm/tm-signal-context-chk-vsx.c:115:23: error: Array 'vsx[4]' accessed at index 15, which is out of bounds. [arrayIndexOutOfBounds]
+    printf("%02x", vsx[j]);
+                      ^
+linux-master/tools/testing/selftests/powerpc/tm/tm-signal-context-chk-vsx.c:139:26: error: Array 'vsx_tm[4]' accessed at index 15, which is out of bounds. [arrayIndexOutOfBounds]
+    printf("%02x", vsx_tm[j]);
+                         ^
+linux-master/tools/testing/selftests/powerpc/tm/tm-signal-context-chk-vsx.c:106:10: error: Buffer is accessed out of bounds: vsx [bufferAccessOutOfBounds]
+  memcpy(vsx, &ucp->uc_mcontext.fp_regs[FPR20 + i], 8);
+         ^
+linux-master/tools/testing/selftests/powerpc/tm/tm-signal-context-chk-vsx.c:130:10: error: Buffer is accessed out of bounds: vsx_tm [bufferAccessOutOfBounds]
+  memcpy(vsx_tm, &tm_ucp->uc_mcontext.fp_regs[FPR20 + i], 8);
+         ^
+linux-master/tools/testing/selftests/powerpc/tm/tm-syscall.c:80:39: error: syntax error: <) [syntaxError]
+ for (count = 0; timercmp(&now, &end, <); count++) {
+                                      ^
+linux-master/tools/testing/selftests/powerpc/tm/tm-unavailable.c:37:0: error: failed to expand 'pr_err', Invalid ## usage when expanding 'err_at_line'. [preprocessorErrorDirective]
+#define err_at_line(status, errnum, format, ...) \
+^
+linux-master/tools/testing/selftests/resctrl/cqm_test.c:89:15: error: Buffer is accessed out of bounds: temp [bufferAccessOutOfBounds]
+ while (fgets(temp, 1024, fp)) {
+              ^
+linux-master/tools/testing/selftests/timens/procfs.c:84:4: error: Resource leak: proc [resourceLeak]
+   return -errno;
+   ^
+linux-master/tools/testing/selftests/timens/procfs.c:87:3: error: Resource leak: proc [resourceLeak]
+  return -1;
+  ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:203:28: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(vm86, vmcode_umip - vmcode, VM86_TRAP, 3, "UMIP tests");
+                           ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:131:2: note: Variable declared here.
+ vmcode_umip[], vmcode_umip_str[], vmcode_umip_sldt[];
+ ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:203:16: note: Array decayed to pointer here.
+ do_test(vm86, vmcode_umip - vmcode, VM86_TRAP, 3, "UMIP tests");
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:203:30: note: Array decayed to pointer here.
+ do_test(vm86, vmcode_umip - vmcode, VM86_TRAP, 3, "UMIP tests");
+                             ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:203:28: note: Subtracting pointers that point to different objects
+ do_test(vm86, vmcode_umip - vmcode, VM86_TRAP, 3, "UMIP tests");
+                           ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:240:32: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(vm86, vmcode_umip_str - vmcode, VM86_SIGNAL, 0,
+                               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:131:17: note: Variable declared here.
+ vmcode_umip[], vmcode_umip_str[], vmcode_umip_sldt[];
+                ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:240:16: note: Array decayed to pointer here.
+ do_test(vm86, vmcode_umip_str - vmcode, VM86_SIGNAL, 0,
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:240:34: note: Array decayed to pointer here.
+ do_test(vm86, vmcode_umip_str - vmcode, VM86_SIGNAL, 0,
+                                 ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:240:32: note: Subtracting pointers that point to different objects
+ do_test(vm86, vmcode_umip_str - vmcode, VM86_SIGNAL, 0,
+                               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:245:33: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(vm86, vmcode_umip_sldt - vmcode, VM86_SIGNAL, 0,
+                                ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:131:36: note: Variable declared here.
+ vmcode_umip[], vmcode_umip_str[], vmcode_umip_sldt[];
+                                   ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:245:16: note: Array decayed to pointer here.
+ do_test(vm86, vmcode_umip_sldt - vmcode, VM86_SIGNAL, 0,
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:245:35: note: Array decayed to pointer here.
+ do_test(vm86, vmcode_umip_sldt - vmcode, VM86_SIGNAL, 0,
+                                  ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:245:33: note: Subtracting pointers that point to different objects
+ do_test(vm86, vmcode_umip_sldt - vmcode, VM86_SIGNAL, 0,
+                                ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:259:34: error: Subtracting pointers that point to different objects [comparePointers]
+ memcpy(addr, vmcode, end_vmcode - vmcode);
+                                 ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:32: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:259:23: note: Array decayed to pointer here.
+ memcpy(addr, vmcode, end_vmcode - vmcode);
+                      ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:259:36: note: Array decayed to pointer here.
+ memcpy(addr, vmcode, end_vmcode - vmcode);
+                                   ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:259:34: note: Subtracting pointers that point to different objects
+ memcpy(addr, vmcode, end_vmcode - vmcode);
+                                 ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:276:29: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(&v86, vmcode_bound - vmcode, VM86_INTx, 5, "#BR");
+                            ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:129:22: note: Variable declared here.
+extern unsigned char vmcode_bound[], vmcode_sysenter[], vmcode_syscall[],
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:276:16: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_bound - vmcode, VM86_INTx, 5, "#BR");
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:276:31: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_bound - vmcode, VM86_INTx, 5, "#BR");
+                              ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:276:29: note: Subtracting pointers that point to different objects
+ do_test(&v86, vmcode_bound - vmcode, VM86_INTx, 5, "#BR");
+                            ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:285:32: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(&v86, vmcode_sysenter - vmcode, -1, 0, "SYSENTER");
+                               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:129:38: note: Variable declared here.
+extern unsigned char vmcode_bound[], vmcode_sysenter[], vmcode_syscall[],
+                                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:285:16: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_sysenter - vmcode, -1, 0, "SYSENTER");
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:285:34: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_sysenter - vmcode, -1, 0, "SYSENTER");
+                                 ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:285:32: note: Subtracting pointers that point to different objects
+ do_test(&v86, vmcode_sysenter - vmcode, -1, 0, "SYSENTER");
+                               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:296:31: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(&v86, vmcode_syscall - vmcode, VM86_SIGNAL, 0, "SYSCALL");
+                              ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:129:57: note: Variable declared here.
+extern unsigned char vmcode_bound[], vmcode_sysenter[], vmcode_syscall[],
+                                                        ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:296:16: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_syscall - vmcode, VM86_SIGNAL, 0, "SYSCALL");
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:296:33: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_syscall - vmcode, VM86_SIGNAL, 0, "SYSCALL");
+                                ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:296:31: note: Subtracting pointers that point to different objects
+ do_test(&v86, vmcode_syscall - vmcode, VM86_SIGNAL, 0, "SYSCALL");
+                              ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:302:27: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(&v86, vmcode_sti - vmcode, VM86_STI, 0, "STI with VIP set");
+                          ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:130:2: note: Variable declared here.
+ vmcode_sti[], vmcode_int3[], vmcode_int80[], vmcode_popf_hlt[],
+ ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:302:16: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_sti - vmcode, VM86_STI, 0, "STI with VIP set");
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:302:29: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_sti - vmcode, VM86_STI, 0, "STI with VIP set");
+                            ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:302:27: note: Subtracting pointers that point to different objects
+ do_test(&v86, vmcode_sti - vmcode, VM86_STI, 0, "STI with VIP set");
+                          ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:307:32: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_UNKNOWN, 0, "POPF with VIP set and IF clear");
+                               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:130:47: note: Variable declared here.
+ vmcode_sti[], vmcode_int3[], vmcode_int80[], vmcode_popf_hlt[],
+                                              ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:307:16: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_UNKNOWN, 0, "POPF with VIP set and IF clear");
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:307:34: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_UNKNOWN, 0, "POPF with VIP set and IF clear");
+                                 ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:307:32: note: Subtracting pointers that point to different objects
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_UNKNOWN, 0, "POPF with VIP set and IF clear");
+                               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:312:32: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_STI, 0, "POPF with VIP and IF set");
+                               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:130:47: note: Variable declared here.
+ vmcode_sti[], vmcode_int3[], vmcode_int80[], vmcode_popf_hlt[],
+                                              ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:312:16: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_STI, 0, "POPF with VIP and IF set");
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:312:34: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_STI, 0, "POPF with VIP and IF set");
+                                 ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:312:32: note: Subtracting pointers that point to different objects
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_STI, 0, "POPF with VIP and IF set");
+                               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:317:32: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_UNKNOWN, 0, "POPF with VIP clear and IF set");
+                               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:130:47: note: Variable declared here.
+ vmcode_sti[], vmcode_int3[], vmcode_int80[], vmcode_popf_hlt[],
+                                              ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:317:16: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_UNKNOWN, 0, "POPF with VIP clear and IF set");
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:317:34: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_UNKNOWN, 0, "POPF with VIP clear and IF set");
+                                 ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:317:32: note: Subtracting pointers that point to different objects
+ do_test(&v86, vmcode_popf_hlt - vmcode, VM86_UNKNOWN, 0, "POPF with VIP clear and IF set");
+                               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:322:28: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(&v86, vmcode_int3 - vmcode, VM86_TRAP, 3, "INT3");
+                           ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:130:16: note: Variable declared here.
+ vmcode_sti[], vmcode_int3[], vmcode_int80[], vmcode_popf_hlt[],
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:322:16: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_int3 - vmcode, VM86_TRAP, 3, "INT3");
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:322:30: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_int3 - vmcode, VM86_TRAP, 3, "INT3");
+                             ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:322:28: note: Subtracting pointers that point to different objects
+ do_test(&v86, vmcode_int3 - vmcode, VM86_TRAP, 3, "INT3");
+                           ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:326:29: error: Subtracting pointers that point to different objects [comparePointers]
+ do_test(&v86, vmcode_int80 - vmcode, VM86_INTx, 0x80, "int80");
+                            ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:130:31: note: Variable declared here.
+ vmcode_sti[], vmcode_int3[], vmcode_int80[], vmcode_popf_hlt[],
+                              ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:326:16: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_int80 - vmcode, VM86_INTx, 0x80, "int80");
+               ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:128:22: note: Variable declared here.
+extern unsigned char vmcode[], end_vmcode[];
+                     ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:326:31: note: Array decayed to pointer here.
+ do_test(&v86, vmcode_int80 - vmcode, VM86_INTx, 0x80, "int80");
+                              ^
+linux-master/tools/testing/selftests/x86/entry_from_vm86.c:326:29: note: Subtracting pointers that point to different objects
+ do_test(&v86, vmcode_int80 - vmcode, VM86_INTx, 0x80, "int80");
+                            ^
+linux-master/tools/testing/selftests/x86/protection_keys.c:703:3: error: Common realloc mistake: 'pkey_malloc_records' nulled but not freed upon failure [memleakOnRealloc]
+  pkey_malloc_records = realloc(pkey_malloc_records, new_size);
+  ^
+linux-master/tools/usb/ffs-aio-example/multibuff/device_app/aio_multibuff.c:320:8: error: Uninitialized variable: ready [uninitvar]
+  if (!ready)
+       ^
+linux-master/tools/usb/ffs-aio-example/simple/device_app/aio_simple.c:297:8: error: Uninitialized variable: ready [uninitvar]
+  if (!ready)
+       ^
+linux-master/include/linux/ptr_ring.h:81:39: error: Uninitialized variable: flags [uninitvar]
+ spin_lock_irqsave(&r->producer_lock, flags);
+                                      ^
+linux-master/include/linux/ptr_ring.h:151:39: error: Uninitialized variable: flags [uninitvar]
+ spin_lock_irqsave(&r->producer_lock, flags);
+                                      ^
+linux-master/include/linux/ptr_ring.h:228:39: error: Uninitialized variable: flags [uninitvar]
+ spin_lock_irqsave(&r->consumer_lock, flags);
+                                      ^
+linux-master/include/linux/ptr_ring.h:354:39: error: Uninitialized variable: flags [uninitvar]
+ spin_lock_irqsave(&r->consumer_lock, flags);
+                                      ^
+linux-master/include/linux/ptr_ring.h:402:39: error: Uninitialized variable: flags [uninitvar]
+ spin_lock_irqsave(&r->consumer_lock, flags);
+                                      ^
+linux-master/include/linux/ptr_ring.h:517:39: error: Uninitialized variable: flags [uninitvar]
+ spin_lock_irqsave(&r->consumer_lock, flags);
+                                      ^
+linux-master/include/linux/ptr_ring.h:600:41: error: Uninitialized variable: flags [uninitvar]
+ spin_lock_irqsave(&(r)->consumer_lock, flags);
+                                        ^
+linux-master/include/linux/ptr_ring.h:644:54: error: Uninitialized variable: flags [uninitvar]
+  spin_unlock_irqrestore(&(rings[i])->consumer_lock, flags);
+                                                     ^
+linux-master/include/linux/ptr_ring.h:83:44: error: Uninitialized variable: flags [uninitvar]
+ spin_unlock_irqrestore(&r->producer_lock, flags);
+                                           ^
+linux-master/include/linux/ptr_ring.h:153:44: error: Uninitialized variable: flags [uninitvar]
+ spin_unlock_irqrestore(&r->producer_lock, flags);
+                                           ^
+linux-master/include/linux/ptr_ring.h:230:44: error: Uninitialized variable: flags [uninitvar]
+ spin_unlock_irqrestore(&r->consumer_lock, flags);
+                                           ^
+linux-master/include/linux/ptr_ring.h:356:44: error: Uninitialized variable: flags [uninitvar]
+ spin_unlock_irqrestore(&r->consumer_lock, flags);
+                                           ^
+linux-master/include/linux/ptr_ring.h:404:44: error: Uninitialized variable: flags [uninitvar]
+ spin_unlock_irqrestore(&r->consumer_lock, flags);
+                                           ^
+linux-master/include/linux/ptr_ring.h:555:44: error: Uninitialized variable: flags [uninitvar]
+ spin_unlock_irqrestore(&r->consumer_lock, flags);
+                                           ^
+linux-master/include/linux/ptr_ring.h:606:46: error: Uninitialized variable: flags [uninitvar]
+ spin_unlock_irqrestore(&(r)->consumer_lock, flags);
+                                             ^
+linux-master/include/linux/ptr_ring.h:639:49: error: Uninitialized variable: flags [uninitvar]
+  spin_lock_irqsave(&(rings[i])->consumer_lock, flags);
+                                                ^
+linux-master/virt/kvm/arm/arch_timer.c:230:7: error: Uninitialized variable: timer_ctx [uninitvar]
+ if (!timer_ctx)
+      ^
+linux-master/virt/kvm/arm/arch_timer.c:1036:31: note: Calling function 'kvm_timer_should_fire', 1st argument 'timer' value is <Uninit>
+ return kvm_timer_should_fire(timer);
+                              ^
+linux-master/virt/kvm/arm/arch_timer.c:230:7: note: Uninitialized variable: timer_ctx
+ if (!timer_ctx)
+      ^
+linux-master/virt/kvm/arm/arch_timer.c:1036:31: error: Uninitialized variable: timer [uninitvar]
+ return kvm_timer_should_fire(timer);
+                              ^
+linux-master/drivers/net/ethernet/socionext/sni_ave.c:377:9: error: Array index out of bounds; buffer 'mac_addr' is accessed at offset 0. [ctuArrayIndex]
+ writel(mac_addr[0] | mac_addr[1] << 8 |
+        ^
+linux-master/drivers/net/ethernet/socionext/sni_ave.c:1481:24: note: Calling function ave_pfsel_set_macaddr, 3rd argument is uninitialized
+  ave_pfsel_set_macaddr(ndev, AVE_PFNUM_MULTICAST,
+                       ^
+linux-master/drivers/net/ethernet/socionext/sni_ave.c:1024:2: note: Calling function ave_hw_write_macaddr, 2nd argument is uninitialized
+ ave_hw_write_macaddr(ndev, mac_addr,
+ ^
+linux-master/drivers/net/ethernet/socionext/sni_ave.c:377:9: note: Using argument mac_addr
+ writel(mac_addr[0] | mac_addr[1] << 8 |
+        ^
+linux-master/drivers/net/ethernet/ti/netcp_core.c:210:2: error: Array index out of bounds; buffer 'x' is accessed at offset 0. [ctuArrayIndex]
+ x[0] = (addr1 & 0x0000ff00) >> 8;
+ ^
+linux-master/drivers/net/ethernet/ti/netcp_core.c:2030:25: note: Calling function emac_arch_get_mac_addr, 1st argument is uninitialized
+  emac_arch_get_mac_addr(efuse_mac_addr, efuse, efuse_mac);
+                        ^
+linux-master/drivers/net/ethernet/ti/netcp_core.c:210:2: note: Using argument x
+ x[0] = (addr1 & 0x0000ff00) >> 8;
+ ^
+linux-master/drivers/scsi/ch.c:193:13: error: Array index out of bounds; buffer 'cmd' is accessed at offset 0. [ctuArrayIndex]
+ timeout = (cmd[0] == INITIALIZE_ELEMENT_STATUS)
+            ^
+linux-master/drivers/scsi/ch.c:255:31: note: Calling function ch_do_scsi, 2nd argument is uninitialized
+ if (0 == (result = ch_do_scsi(ch, cmd, 12,
+                              ^
+linux-master/drivers/scsi/ch.c:193:13: note: Using argument cmd
+ timeout = (cmd[0] == INITIALIZE_ELEMENT_STATUS)
+            ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:6191:6: error: Null pointer dereference: dm_state [ctunullpointer]
+ if (dm_state->scaling != old_dm_state->scaling)
+     ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7570:76: note: Assignment 'dm_old_conn_state=NULL', assigned value is 0
+
+                                                                           ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7750:32: note: Calling function is_scaling_state_different, 1st argument is null
+ if (is_scaling_state_different(dm_old_conn_state, dm_new_conn_state))
+                               ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:6191:6: note: Dereferencing argument dm_state that is null
+ if (dm_state->scaling != old_dm_state->scaling)
+     ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:6191:27: error: Null pointer dereference: old_dm_state [ctunullpointer]
+ if (dm_state->scaling != old_dm_state->scaling)
+                          ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7570:49: note: Assignment 'dm_new_conn_state=NULL', assigned value is 0
+
+                                                ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7750:32: note: Calling function is_scaling_state_different, 2nd argument is null
+ if (is_scaling_state_different(dm_old_conn_state, dm_new_conn_state))
+                               ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:6191:27: note: Dereferencing argument old_dm_state that is null
+ if (dm_state->scaling != old_dm_state->scaling)
+                          ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7515:4: error: Null pointer dereference: new_con_state [ctunullpointer]
+   to_amdgpu_dm_connector(new_con_state->base.connector);
+   ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7570:49: note: Assignment 'dm_new_conn_state=NULL', assigned value is 0
+
+                                                ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7769:30: note: Calling function get_freesync_config_for_crtc, 2nd argument is null
+ get_freesync_config_for_crtc(dm_new_crtc_state,
+                             ^
+linux-master/drivers/gpu/drm/amd/display/amdgpu_dm/amdgpu_dm.c:7515:4: note: Dereferencing argument new_con_state that is null
+   to_amdgpu_dm_connector(new_con_state->base.connector);
+   ^
+linux-master/drivers/hid/i2c-hid/i2c-hid-core.c:234:29: error: Null pointer dereference: args [ctunullpointer]
+ memcpy(cmd->data + length, args, args_len);
+                            ^
+linux-master/drivers/hid/i2c-hid/i2c-hid-core.c:284:26: note: Calling function __i2c_hid_command, 5th argument is null
+ return __i2c_hid_command(client, command, 0, 0, NULL, 0,
+                         ^
+linux-master/drivers/hid/i2c-hid/i2c-hid-core.c:234:29: note: Dereferencing argument args that is null
+ memcpy(cmd->data + length, args, args_len);
+                            ^
+linux-master/drivers/infiniband/hw/hns/hns_roce_hw_v2.c:3603:24: error: Null pointer dereference: attr [ctunullpointer]
+ hr_qp->access_flags = attr->qp_access_flags;
+                       ^
+linux-master/drivers/infiniband/hw/hns/hns_roce_hw_v2.c:4735:45: note: Calling function 'hns_roce_v2_modify_qp', 2nd argument 'NULL' value is 0
+
+                                            ^
+linux-master/drivers/infiniband/hw/hns/hns_roce_hw_v2.c:4478:34: note: Calling function hns_roce_v2_set_abs_fields, 2nd argument is null
+ ret = hns_roce_v2_set_abs_fields(ibqp, attr, attr_mask, cur_state,
+                                 ^
+linux-master/drivers/infiniband/hw/hns/hns_roce_hw_v2.c:4242:3: note: Calling function modify_qp_reset_to_init, 2nd argument is null
+  modify_qp_reset_to_init(ibqp, attr, attr_mask, context,
+  ^
+linux-master/drivers/infiniband/hw/hns/hns_roce_hw_v2.c:3603:24: note: Dereferencing argument attr that is null
+ hr_qp->access_flags = attr->qp_access_flags;
+                       ^
+linux-master/drivers/media/pci/ngene/ngene-i2c.c:39:31: error: Null pointer dereference: out [ctunullpointer]
+ memcpy(com.cmd.I2CRead.Data, out, outlen);
+                              ^
+linux-master/drivers/media/pci/ngene/ngene-i2c.c:122:30: note: Calling function ngene_command_i2c_read, 3rd argument is null
+  if (!ngene_command_i2c_read(dev, msg[0].addr, NULL, 0,
+                             ^
+linux-master/drivers/media/pci/ngene/ngene-i2c.c:39:31: note: Dereferencing argument out that is null
+ memcpy(com.cmd.I2CRead.Data, out, outlen);
+                              ^
+linux-master/drivers/mmc/host/sdhci.c:887:26: error: Null pointer dereference: cmd [ctunullpointer]
+ struct mmc_data *data = cmd->data;
+                         ^
+linux-master/drivers/mmc/host/sdhci.c:3674:26: note: Calling function 'sdhci_set_timeout', 2nd argument 'NULL' value is 0
+
+                         ^
+linux-master/drivers/mmc/host/sdhci.c:1030:29: note: Calling function '__sdhci_set_timeout', 2nd argument 'cmd' value is 0
+
+                            ^
+linux-master/drivers/mmc/host/sdhci.c:1015:24: note: Calling function sdhci_calc_sw_timeout, 2nd argument is null
+  sdhci_calc_sw_timeout(host, cmd);
+                       ^
+linux-master/drivers/mmc/host/sdhci.c:887:26: note: Dereferencing argument cmd that is null
+ struct mmc_data *data = cmd->data;
+                         ^
+linux-master/drivers/mtd/ubi/eba.c:849:32: error: Null pointer dereference: buf [ctunullpointer]
+ memcpy(ubi->peb_buf + offset, buf, len);
+                               ^
+linux-master/drivers/mtd/ubi/eba.c:1208:44: note: Calling function 'ubi_eba_write_leb', 4th argument 'NULL' value is 0
+
+                                           ^
+linux-master/drivers/mtd/ubi/eba.c:1037:22: note: Calling function recover_peb, 5th argument is null
+    err = recover_peb(ubi, pnum, vol_id, lnum, buf,
+                     ^
+linux-master/drivers/mtd/ubi/eba.c:917:9: note: Calling function try_recover_peb, 4th argument is null
+  err = try_recover_peb(vol, pnum, lnum, buf, offset, len, vidb,
+        ^
+linux-master/drivers/mtd/ubi/eba.c:849:32: note: Dereferencing argument buf that is null
+ memcpy(ubi->peb_buf + offset, buf, len);
+                               ^
+linux-master/drivers/net/ethernet/huawei/hinic/hinic_hw_cmdq.c:179:32: error: Null pointer dereference: buf_out [ctunullpointer]
+ hinic_set_sge(&sge_resp->sge, buf_out->dma_addr, buf_out->size);
+                               ^
+linux-master/drivers/net/ethernet/huawei/hinic/hinic_hw_cmdq.c:378:19: note: Calling function cmdq_set_lcmd_wqe, 4th argument is null
+ cmdq_set_lcmd_wqe(&cmdq_wqe, CMDQ_CMD_SYNC_DIRECT_RESP, buf_in, NULL,
+                  ^
+linux-master/drivers/net/ethernet/huawei/hinic/hinic_hw_cmdq.c:261:3: note: Calling function cmdq_set_sge_completion, 2nd argument is null
+  cmdq_set_sge_completion(&wqe_lcmd->completion, buf_out);
+  ^
+linux-master/drivers/net/ethernet/huawei/hinic/hinic_hw_cmdq.c:179:32: note: Dereferencing argument buf_out that is null
+ hinic_set_sge(&sge_resp->sge, buf_out->dma_addr, buf_out->size);
+                               ^
+linux-master/drivers/net/ethernet/intel/igb/e1000_mac.c:479:30: error: Null pointer dereference: mc_addr [ctunullpointer]
+ hash_value = hash_mask & (((mc_addr[4] >> (8 - bit_shift)) |
+                             ^
+linux-master/drivers/net/ethernet/intel/igb/igb_main.c:4849:26: note: Calling function igb_update_mc_addr_list, 2nd argument is null
+  igb_update_mc_addr_list(hw, NULL, 0);
+                         ^
+linux-master/drivers/net/ethernet/intel/igb/e1000_mac.c:505:16: note: Calling function igb_hash_mc_addr, 2nd argument is null
+  hash_value = igb_hash_mc_addr(hw, mc_addr_list);
+               ^
+linux-master/drivers/net/ethernet/intel/igb/e1000_mac.c:479:30: note: Dereferencing argument mc_addr that is null
+ hash_value = hash_mask & (((mc_addr[4] >> (8 - bit_shift)) |
+                             ^
+linux-master/drivers/net/ethernet/intel/igc/igc_mac.c:851:30: error: Null pointer dereference: mc_addr [ctunullpointer]
+ hash_value = hash_mask & (((mc_addr[4] >> (8 - bit_shift)) |
+                             ^
+linux-master/drivers/net/ethernet/intel/igc/igc_main.c:848:26: note: Calling function igc_update_mc_addr_list, 2nd argument is null
+  igc_update_mc_addr_list(hw, NULL, 0);
+                         ^
+linux-master/drivers/net/ethernet/intel/igc/igc_mac.c:877:16: note: Calling function igc_hash_mc_addr, 2nd argument is null
+  hash_value = igc_hash_mc_addr(hw, mc_addr_list);
+               ^
+linux-master/drivers/net/ethernet/intel/igc/igc_mac.c:851:30: note: Dereferencing argument mc_addr that is null
+ hash_value = hash_mask & (((mc_addr[4] >> (8 - bit_shift)) |
