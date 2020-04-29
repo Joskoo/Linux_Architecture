@@ -223,7 +223,7 @@ Voici les résultats de l'analyse de code :
   <p align="center"> </p>
 </p>
 
-- Une prédiction de CodeScene sur 3 fichiers qui risque une baisse de qualité du code et donc 
+- Une prédiction de CodeScene sur 3 fichiers qui risque une baisse de qualité du code
 <p align="center">
   <img src="./img/codescene3.JPG" alt="drawing" title="term1" width="700"/>
   <p align="center"> </p>
